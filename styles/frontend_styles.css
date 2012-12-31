@@ -1,0 +1,233 @@
+body
+{
+	overflow:hidden;	
+}
+
+.wesley-cmsnav
+{
+	display:block;
+	width:100%;
+	min-height:25%;
+	height:25%;
+	background:#BBB9BA;
+	/*position:fixed;
+	bottom:0px;*/
+	border-top:1px solid #BBB9BA;
+	border-bottom:1px solid #808080;
+	box-shadow:0px 18px 10px 10px #000;
+	-moz-box-shadow:0px 18px 10px 10px #000;
+	-webkit-box-shadow:0px 18px 10px 10px #000;
+	font-family: arial;
+	
+}
+
+#contentFrameWrapper{
+	overflow:auto;
+	/*height:75%;*/
+}
+
+.wesley-cmsnav-toolbar
+{
+	border-top: 1px solid #fff;
+	background: url('/admin/modules/pages/images/wesley-cms-toolbar.gif');
+	width:100%;
+	display:block;
+	height:25px;
+}
+
+
+
+.wesley-cmsnav-toolbar ul
+{
+	margin:0px;
+	padding:0px;
+	display:block;
+	float:left;
+	height:25px;
+}
+
+.wesley-cmsnav-toolbar div
+{
+	float:left;
+	height:25px;
+}
+
+.wesley-cmsnav-toolbar ul li
+{
+	float:left;
+	/*width:25px;*/
+	height:25px;
+	overflow:hidden;
+	/*border:1px solid #666;*/
+	margin:0px;
+	padding:0px;
+}
+
+.wesley-cmsnav-toolbar ul li a
+{
+	display:block;
+	padding:0 10px 0 0;
+	line-height:25px;
+}
+
+.wesley-cmsnav-toolbar ul.wesley-cmsnav-tabs li a
+{
+	border-left: 1px solid #BBB9BA;
+	border-radius: 5px 5px 5px 5px;
+	border-right: 1px solid #BBB9BA;
+	border-top: 1px solid #BBB9BA;
+	font-size: 11px;
+	line-height: 20px;
+	margin-right: 5px;
+	margin-top: 4px;
+	padding: 0 8px 5px;
+
+
+}
+
+.wesley-cmsnav-toolbar ul.wesley-cmsnav-buttons
+{
+	margin-right:20px;
+}
+
+.wesley-cmsnav-toolbar ul.wesley-cmsnav-buttons li a
+{
+	width:25px;
+	overflow:hidden;
+	font-size:12px;
+	text-indent:-999px;
+	border-right:1px solid #BBB9BA;
+	
+	
+}
+
+.wesley-cmsnav-toolbar ul li a.wesley-cmsnav-logo{
+	font-style:italic;
+	padding:0px 10px;
+}
+
+.wesley-cmsnav-inner
+{
+	display:block;
+	width:100%;
+	border-top:1px solid #BBB9BA;
+	/*margin:0px auto;*/
+	height:222px;
+}
+
+#wesley-cmsnav-content
+{
+	height:222px;
+}
+
+#wesley-cmsnav-contenteditarea
+{
+	height:222px;
+	/*overflow-y:scroll;*/
+	float:left;
+	background:#fff;
+}
+
+#wesley-cmsnav-widgetstitle,#wesley-cmsnav-contenteditareatitle
+{
+	background: url("/admin/modules/pages/images/wesley-cms-toolbar.gif") repeat scroll 0 0 transparent;
+	border-bottom: 1px solid #BBB9BA;
+	font-family: inherit;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 5px 10px;
+}
+
+#wesley-cmsnav-widgetmenu
+{
+	height:222px;
+	float:left;
+	background: none repeat scroll 0 0 #FFFFFF;
+	border-left: 1px solid #BBB9BA;
+	overflow-y:scroll;
+}
+
+
+#wesley-cmsnav-widgetmenu a:hover
+{
+	text-decoration:none;
+	border:1px solid #ccc;
+}
+
+#wesley-cmsnav-widgetmenu a
+{
+	display:block;
+	width:70px;
+	height:80px;
+	float:left;
+	margin:5px;
+	padding:5px;
+	text-align:center;
+	border:1px solid transparent;
+	border-radius:8px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	background:#fff;
+}
+
+#wesley-cmsnav-widgetmenu a img
+{
+	width:60px;
+}
+
+#wesley-cmsnav-widgetmenu a span
+{
+	display:block;
+	font-size:10px;
+	width:60px;
+	text-align:center;
+	
+	padding:5px;
+}
+
+
+
+.outer
+{
+
+}
+
+.highlight
+{
+	outline: 4px solid #07C;
+}
+
+.wesley-spot
+{
+	border: 1px solid #BBB9BA;
+	border-radius: 10px;
+	box-shadow: 0 0 8px -2px #000000 inset;
+	padding: 10px;
+}
+
+
+.wesley-spot.wesley-spot-active, .wesley-spot:hover {
+	border:1px solid #BBB9BA;
+	background:#f5f5f5;
+}
+
+.wesley-cmsnav-widget
+{
+	border: 1px solid #BBB9BA;
+	border-radius: 10px 10px 10px 10px;
+	height: 100%;
+	width: 250px;
+}
+
+.wesley-cmsnav-widget-toolbar
+{
+	width:100%;
+	background:#BBB9BA;
+	height:25px;
+}
+
+.wesley-cmsnav-widget-content
+{
+	background:transparent;
+	
+}

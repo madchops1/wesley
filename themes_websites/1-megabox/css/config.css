@@ -1,0 +1,19 @@
+@import url('color_scheme/darkblue.css');
+/* Above is the link to default color scheme. */
+
+
+/*-----------------------------------------
+Write your custom CSS in this file, below this comment
+Tip: you can copy (don't cut text, just copy and paste it here) the necesay styles from style.css and paste them here and make the changes
+-----------------------------------------*/
+
+/*
+	Change background pattern for header
+	From 1 to 61 patterns are repeatable. That mean you must set "background-repeat: repeat;"
+	From a1 to a31 patterns are not repeatable. That are bacround images. You must set "background-repeat: no-repeat;"
+ */
+header.main_header {
+background-image: url(../images/pattern/a10.png);
+background-repeat: repeat;
+background-position: center top;
+}

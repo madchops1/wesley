@@ -1,0 +1,77 @@
+/* In this fil you will find the special styles for the choosen colour/type */
+
+/*******************/
+/*   Site basics   */
+/*******************/
+
+body{ background-color: #f1f1f1; }
+
+a{ color: #363636; }
+
+	a.small { color: #ad2c91; }
+
+	a.more { color: #af2798; }
+	
+	a.classic { color: #af2798; }
+
+/************/
+/*   Logo   */
+/************/
+
+div#logo { background: url(../classic_images/logo.png) no-repeat; }
+
+/******************/
+/*   Navigation   */
+/******************/
+
+/* On states */
+
+div#nav.home ul li a#home { color: #363636; }
+div#nav.about ul li a#about { color: #363636; }
+div#nav.portfolio ul li a#portfolio { color: #363636; }
+div#nav.blog ul li a#blog { color: #363636; }
+div#nav.contact ul li a#contact { color: #363636; }	
+
+/*****************/
+/*   Showcases   */
+/*****************/
+
+/* Full showcase */
+
+button.prev { background: url(../classic_images/prev.png) no-repeat; }
+
+button.next { background: url(../classic_images/next.png) no-repeat; }
+
+a.showcase_link { background: url(../classic_images/SC_home_title.png) no-repeat; }
+	
+a.moreinfo { background-image: url(../classic_images/SC_home_more.png); }
+	
+/* Mini showcase */
+
+button.prev_mini { background: url(../classic_images/prev.png) no-repeat; }
+
+button.next_mini { background: url(../classic_images/next.png) no-repeat; }
+
+/* Product showcase */
+
+button.prev_product { background: url(../classic_images/prev.png) no-repeat; }
+
+button.next_product { background: url(../classic_images/next.png) no-repeat; }
+
+h3 a { background-image: url(../classic_images/BG_product_name.jpg); }
+
+/************/
+/*   Home   */
+/************/
+
+/* JFlow homepage */
+
+span.jFlowControl { background-image: url(../classic_images/JFlow_default.png); }
+
+span.jFlowControl.jFlowSelected { background-image: url(../classic_images/JFlow_selected.png); }
+
+/***************/
+/*   Contact   */
+/***************/
+
+input#submit { background-image: url(../classic_images/B_big.png); }
