@@ -1,0 +1,96 @@
+API description fo the htmlcsseditor
+------------------------------------
+
+The following Javascript functions can be used to integrate with the css editor:
+
+insertEditor(element)
+---------------------
+* arguments: the id of the element which will be used as a container for the css editor
+* returns: -
+
+This function is called in order to show the css editor in a given html element container. If the css editor is to be shown from the beginning, the function can be called from inside the <body> tag, using the onLoad() function. For example, the following code is used in the example:
+
+<body onLoad="insertEditor(css)">
+ <table>
+  <tr>
+   <td id="css" class="editor">Loading the css editor...</td>
+    ...
+
+getStyle()
+----------
+* arguments: -
+* returns: an array of attributes, specified in the css editor, in the form attribute=value 
+
+Using the getStyle() function of the CSS editor's API, all css attributes from the editor are retrieved as an array of text elements in the form attribute=value. For example, the code used in his example is as shown below:
+
+/// show all style elements in the textarea
+function showStyle() {
+    var values = getStyle();
+    var editor = document.all["editor"]; 
+    
+    editor.value = "";
+    
+    for (i = 0; i < values.length; i++) {
+        var splitted = values[i].split("=");
+        editor.value += splitted[0] + ": " + splitted[1] + "\n";
+    }
+}
+									
+setStyle(attributes)
+--------------------
+* arguments: an array of attributes to show in the css editor
+* returns: -
+
+Set Style: the setStyle() function allows a HTML editor to set the style attributes of an element inside the CSS editor. This can be used to change the style of an element again and again. The code used in the example is as follows:
+
+/// set the attributes of an element in the css editor
+function setAttributes() {
+	var atts = new Array();
+	
+	atts[0] = "background-color=burlywood";
+	atts[1] = "border-width=medium";
+	atts[2] = "border-style=groove";
+	atts[3] = "border-color=cadetblue";
+	atts[4] = "font-family=brush script mt";
+	atts[5] = "font-size=x-large";
+	atts[6] = "color=blue";
+	atts[7] = "text-align=center";
+
+	setStyle(atts);
+}
+
+
+clearStyle()
+------------
+* arguments: -
+* returns: -
+
+The usage of the clearStyle() function is quite clear: it simply removes all style attributes shown in the CSS edtior. The code used in this example is:
+
+/// reset all style elements
+function resetStyle() {  
+    clearStyle();
+    document.all["editor"].value = "";
+}										
+									
+
+addChangesListener(func)
+----------------------------
+* arguments: func - the name of the function that should be called when changesare made in the editor. The function func should in turn take a combobox as argument
+* returns: -
+
+The addChangesListener() function is a bit more complicated. Following the listener pattern, this function allows you to place a call to a function of your choice whenever a change was made to any style attribute in a combobox in the CSS editor. The function you want to call will receive a single value as argument, namely the combobox whos value is changed. The code used in the example is as follows:
+
+/// add a listener to changes. Whenever the user changes anything in the style
+/// comboboxes, call the onChangesListener function
+function addListener() {
+    addChangesListener(onStyleChanged);   
+}
+
+/// print the changed style in the textarea
+function onStyleChanged(combo) {
+    document.all["editor"].value = combo.id + ": " + combo.value;
+}								
+								
+
+

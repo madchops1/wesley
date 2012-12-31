@@ -1,0 +1,29 @@
+
+<html>
+  <head>
+    <script type="text/javascript" src="../javascript/css.js"></script>
+    <script type="text/javascript" src="../javascript/css_number.js"></script>
+    <link rel="stylesheet" href="../style/css.css" type="text/css" />
+    <title>Choose size...</title>
+  </head>
+  <body onLoad="init()">
+    <form>
+      <table class="dialog">
+        <tr>
+          <td class="center">
+            <button onmousedown="minus('x')" onmouseup="stop()">-</button>
+            <input type="text" value="0" id="x" name="x" class="numberinput" />
+            <button onmousedown="plus('x')" onmouseup="stop()">+</button>
+          </td>
+        </tr>
+        <tr>
+          <td class="center">
+            <button onClick="ok()">Ok</button>
+            <button onClick="cancel()">Cancel</button>
+          </td>
+        </tr>
+      </table>
+
+    </form>
+  </body>
+</html>

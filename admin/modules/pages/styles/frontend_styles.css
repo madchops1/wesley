@@ -1,0 +1,958 @@
+body
+{
+	overflow:hidden;	
+}
+
+/** SITE EDITOR
+**********************************************************************************/
+
+.wesley-cmsnav
+{
+	display:block;
+	width:100%;
+	min-height:25%;
+	height:25%;
+	background:#BBB9BA;
+	/*position:fixed;
+	bottom:0px;*/
+	border-top:1px solid #BBB9BA;
+	border-bottom:1px solid #808080;
+	box-shadow:0px 18px 10px 10px #000;
+	-moz-box-shadow:0px 18px 10px 10px #000;
+	-webkit-box-shadow:0px 18px 10px 10px #000;
+	font-family: arial;
+    position:absolute;
+    z-index:100;
+	
+}
+
+#wesley-html-editor
+{
+    height:197px;    
+}
+
+.wesley-cmsnav-minimized
+{
+	height:25px;
+	overflow:hidden;
+}
+
+/** SITE EDITOR TOOLBAR
+**********************************************************************************/
+.wesley-cmsnav-toolbar
+{
+	border-top: 1px solid #fff;
+	background: url('/admin/modules/pages/images/wesley-cms-toolbar.gif');
+	width:100%;
+	display:block;
+	height:25px;
+}
+
+.wesley-cmsnav-search{
+	margin-right:10px;
+}
+
+.wesley-cmsnav-search input{
+	border: 1px solid #CCCCCC;
+	border-radius: 10px 10px 10px 10px;
+	height: 17px;
+	margin-top: 3px;
+	padding: 0 5px;
+}
+
+.wesley-cmsnav-toolbar ul
+{
+	margin:0px;
+	padding:0px;
+	display:block;
+	float:left;
+	height:25px;
+}
+
+.wesley-cmsnav-toolbar div
+{
+	float:left;
+	height:25px;
+}
+
+.wesley-cmsnav-toolbar ul li, .wesley-cmsnav-widget-toolbar ul li, .wesley-cmsnav-contenteditareatitle ul li
+{
+	float:left;
+	/*width:25px;*/
+	height:20px;
+	/*overflow:hidden;*/
+	/*border:1px solid #666;*/
+	margin:0px;
+	padding:0px;
+}
+
+#wesley-css-element{
+    display:block;
+    float:right;
+    font-weight:normal;
+}
+
+.wesley-cmsnav-toolbar ul li a, .wesley-cmsnav-widget-toolbar ul li a, .wesley-cmsnav-contenteditareatitle ul.wesley-cmsnav-buttons li a
+{
+	display:block;
+	padding:0 10px 0 0;
+	line-height:25px;
+}
+
+.wesley-cmsnav-toolbar ul.wesley-cmsnav-tabs
+{
+	margin-left:10px;
+}
+
+
+/** THEME / WEBSITE WRAPPER
+**********************************************************************************/
+#contentFrameWrapper{
+	overflow:auto;
+	/*height:75%;*/
+}
+
+/** WEBSITE EDITOR TABS
+**********************************************************************************/
+ul.wesley-cmsnav-tabs li a
+{
+	border-left: 1px solid #BBB9BA;
+	-moz-border-radius: 	5px 5px 0px 0px;
+	-webkit-border-radius: 	5px 5px 0px 0px;
+	border-radius: 			5px 5px 0px 0px;
+	border-right: 1px solid #BBB9BA;
+	border-top: 1px solid #BBB9BA;
+	font-size: 11px;
+	line-height: 15px;
+	margin-right: 5px;
+	margin-top: 4px;
+	padding: 0 8px 5px;
+	outline: none;
+
+}
+
+.wesley-cms-active-tab{
+	bottom:-1px;
+	position:relative;
+	z-index:900;
+	background:#fff;
+}
+
+/** WEBSITE EDITOR BUTTONS
+**********************************************************************************/
+ul.wesley-cmsnav-buttons
+{
+	margin:0px;
+	height:25px;
+}
+
+ul.wesley-cmsnav-buttons li a
+{
+	width:18px;
+	overflow:hidden;
+	font-size:12px;
+	text-indent:-999px;
+	/*border-right:1px solid #BBB9BA;*/
+    background-position: 5px 3px;
+    background-repeat: no-repeat;
+	
+}
+
+.wesley-cmsnav-leftbuttons
+{
+	/*margin-right:20px;*/
+	border-right:1px solid #BBB9BA;
+}
+
+.wesley-cmsnav-rightbuttons
+{
+	/*margin-left:20px;*/
+	border-left:1px solid #BBB9BA;
+}
+
+/** TOOLBAR ICONS **/
+.wesley-cmsnav-help{
+background-image: url("/admin/modules/pages/images/icons/gray_18/help.png");
+}
+ul.wesley-cmsnav-buttons li a.wesley-cmsnav-logo{
+    font-size: 10px;
+    margin-left: 10px;
+    text-indent: 0;
+    width: 35px;
+}
+
+ul.wesley-cmsnav-buttons li a.wesley-cmsnav-logo:hover{
+    color:#0b7cca;
+    text-decoration:none;   
+}
+.wesley-cmsnav-pointer{
+background-image: url("/admin/modules/pages/images/icons/gray_18/target.png");
+}
+.wesley-cmsnav-maximize{
+background-image: url("/admin/modules/pages/images/icons/gray_18/directional_up.png");
+}
+.wesley-cmsnav-minimize{
+background-image: url("/admin/modules/pages/images/icons/gray_18/directional_down.png");
+}
+.wesley-cmsnav-close{
+background-image: url("/admin/modules/pages/images/icons/gray_18/close.png");
+}
+.wesley-cmsnav-widget-close{
+background-image: url("/admin/modules/pages/images/icons/gray_18/close.png");
+}
+.wesley-cmsnav-widget-resize{
+background-image: url("/admin/modules/pages/images/icons/gray_18/dimensions.png");
+}
+.wesley-cmsnav-widget-edit{
+background-image: url("/admin/modules/pages/images/icons/gray_18/pencil.png");
+}
+.wesley-cmsnav-widget-move{
+background-image: url("/admin/modules/pages/images/icons/gray_18/arrow_bidirectional.png");
+}
+
+ul li a.root{
+background-image: url("/admin/modules/pages/images/icons/gray_18/first.png");
+}
+ul li a.backdirectory{
+background-image: url("/admin/modules/pages/images/icons/gray_18/arrow_left2.png");
+}
+ul li a.newdirectory{
+background-image: url("/admin/modules/pages/images/icons/gray_18/add.png");
+}
+
+/** TOOLBAR ICONS HOVER STATE **/
+.wesley-cmsnav-help:hover{
+background-image: url("/admin/modules/pages/images/icons/color_18/help.png");
+}
+.wesley-cmsnav-pointer:hover{
+background-image: url("/admin/modules/pages/images/icons/color_18/target.png");
+}
+.wesley-cmsnav-maximize:hover{
+background-image: url("/admin/modules/pages/images/icons/color_18/directional_up.png");
+}
+.wesley-cmsnav-minimize:hover{
+background-image: url("/admin/modules/pages/images/icons/color_18/directional_down.png");
+}
+.wesley-cmsnav-close:hover{
+background-image: url("/admin/modules/pages/images/icons/color_18/close.png");
+}
+ul li a.root:hover{
+background-image: url("/admin/modules/pages/images/icons/color_18/first.png");
+}
+ul li a.backdirectory:hover{
+background-image: url("/admin/modules/pages/images/icons/color_18/arrow_left2.png");
+}
+ul li a.newdirectory:hover{
+background-image: url("/admin/modules/pages/images/icons/color_18/add.png");
+}
+/*
+.wesley-cmsnav-toolbar ul li a.wesley-cmsnav-logo{
+	font-style:italic;
+	padding:0px 10px;
+	
+}
+*/
+
+.wesley-cmsnav-inner
+{
+	display:block;
+	width:100%;
+	border-top:1px solid #BBB9BA;
+	/*margin:0px auto;*/
+	height:222px;
+}
+
+#wesley-cmsnav-content
+{
+	height:222px;
+}
+
+#wesley-cmsnav-contenteditarea
+{
+	height:222px;
+	/*overflow-y:scroll;*/
+	float:left;
+	background:#EEEEEE;
+}
+
+.wesley-cmsnav-contenteditarea-edit
+{
+	height: 197px;
+	/*overflow-y: scroll;*/
+}
+
+#wesley-cmsnav-designeditarea
+{
+    height:222px;
+    float:left;
+    background:#fff;
+}
+
+.overflowy
+{
+	overflow-y:scroll;
+}
+
+#wesley-cmsnav-widgetstitle, .wesley-cmsnav-contenteditareatitle, #wesley-cmsnav-css-editor-title
+{
+	background: url("/admin/modules/pages/images/wesley-cms-toolbar.gif") repeat scroll 0 0 transparent;
+	border-bottom: 1px solid #BBB9BA;
+	font-family: inherit;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 5px 10px;
+	height:14px;
+	/*overflow:hidden;*/
+}
+
+#wesley-cmsnav-widgetstitle span, .wesley-cmsnav-contenteditareatitle  span
+{
+	/*display: block;*/
+	float: left;
+	margin: 0 20px 0 0;
+	/*line-height:25px;*/
+}
+
+.wesley-cmsnav-contenteditareatitle .wesley-cmsnav-tabs
+{
+	/*float:right;*/
+}
+
+/** PANEL FORM TABLE
+**********************************************************************************/
+.wesley-cmsnav-contenteditarea-edit table
+{
+	background: none repeat scroll 0 0 #EEEEEE;
+    font-size: 12px;
+    /*height: 100%;*/
+    text-align: left;
+    width: 100%;
+}
+
+.wesley-cmsnav-contenteditarea-edit table.form
+{
+
+}
+
+.wesley-cmsnav-contenteditarea-edit table.form th
+{
+	font-weight:bold;
+	padding:5px;
+	border-bottom:1px solid #BBB9BA;
+	border-right:1px solid #BBB9BA;
+	width:25%
+}
+
+.wesley-cmsnav-contenteditarea-edit table.form td
+{
+	font-weight:normal;
+	padding:5px;
+	border-bottom:1px solid #BBB9BA;
+}
+
+.wesley-cmsnav-contenteditarea-edit table.form input
+{
+	border:1px solid #BBB9BA;
+	border-radius:12px;
+	-moz-border-radius:12px;
+	-webkit-border-radius:12px;
+	width:85%;
+	padding:3px;
+}
+
+/** PANEL FILES TABLE
+**********************************************************************************/
+.wesley-cmsnav-contenteditarea-edit table.files
+{
+	
+}
+
+.wesley-cmsnav-contenteditarea-edit table.files th
+{
+
+}
+
+#wesley-cmsnav-widgetmenu
+{
+	height:222px;
+	float:left;
+	background: none repeat scroll 0 0 #FFFFFF;
+	border-left: 1px solid #BBB9BA;
+	/*overflow-y:scroll;*/
+}
+
+#wesley-cmsnav-css-editor
+{
+	height:222px;
+	float:left;
+	background: none repeat scroll 0 0 #FFFFFF;
+	border-left: 1px solid #BBB9BA;
+	/*overflow-y:scroll;*/
+}
+
+  
+
+#wesley-cmsnav-widgetmenu-widgets, #wesley-css-editor
+{
+	overflow-y:scroll;
+	height:197px;
+}
+
+#wesley-cmsnav-widgetmenu-contenteditarea-edit
+{
+	overflow-y:scroll;
+	height:197px;
+}
+
+
+#wesley-cmsnav-widgetmenu a:hover
+{
+	text-decoration:none;
+	border:1px solid #ccc;
+}
+
+#wesley-cmsnav-widgetmenu a
+{
+	display:block;
+	width:70px;
+	height:80px;
+	float:left;
+	margin:5px;
+	padding:5px;
+	text-align:center;
+	border:1px solid transparent;
+	border-radius:8px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	background:#fff;
+}
+
+#wesley-cmsnav-widgetmenu a img
+{
+	width:60px;
+}
+
+#wesley-cmsnav-widgetmenu a span
+{
+	display:block;
+	font-size:10px;
+	width:60px;
+	text-align:center;
+	
+	padding:5px;
+}
+
+
+/** SPOT STYLES
+**********************************************************************************/
+.wesley-spot
+{
+	/*border: 1px solid #dae9ef;*/
+	background:#dae9ef;
+	border-radius: 3px;
+	/*box-shadow: 0 0 8px -2px #000000 inset;*/
+	padding: 0px;
+	position:relative;
+	margin:0px;
+	border:1px solid transparent;
+}
+
+
+.wesley-spot.wesley-spot-active, .wesley-spot:hover
+{
+	/*border:1px solid #9fd8ef;*/
+	background:#9fd8ef;
+    /*outline:1px solid #00fcff;*/
+}
+
+.wesley-spot.wesley-spot-inactive, .wesley-spot.wesley-spot-inactive:hover
+{
+	border:1px solid transparent;
+	background:transparent;
+}
+
+/*
+.ui-sortable-placeholder
+{ 
+	border: 1px dashed black;
+	visibility: visible !important;
+	height: 50px !important;
+	width: 50px !important;
+	margin:10px;
+	background-color:transparent !important; 
+	box-shadow: 0px !important;
+	-moz-box-shadow: 0px !important;
+	-webkit-box-shadow: 0px !important;
+}
+.ui-sortable-placeholder * { visibility: hidden; }
+ */
+ 
+/** WIDGET STYLES
+**********************************************************************************/
+.wesley-cms-widget
+{
+	float:left;
+	overflow:hidden;
+	background:transparent;
+	display:block;
+	position:relative;
+}
+
+.wesley-cmsnav-widget
+{
+	/*border: 1px solid #BBB9BA;*/
+	/*border-radius: 10px 10px 10px 10px;*/
+	/*height: 100%;*/
+	/*width: 100%;*/
+	float:left;
+	/*margin-right:10px;*/
+	/*overflow:hidden;*/
+	/*background:#fff;*/
+	background:transparent;
+	
+	
+	display:block;
+	position:relative;
+}
+
+.wesley-widget-overflow-hidden{
+    overflow:hidden;
+}
+
+.wesley-widget-overflow-visible{
+    overflow:visible;
+}
+
+.cms-widget{
+    /*box-shadow:0 0 2px 0 #000000;
+	-moz-box-shadow:0 0 2px 0 #000000;
+	-webkit-box-shadow:0 0 2px 0 #000000;*/
+    /*opacity:0.8;*/
+    outline:1px dotted #666;
+}
+
+.cms-widget.resizemode{
+    outline:1px dotted red !important;
+}
+
+.cms-widget.movemode{
+    outline:1px dotted yellow !important;
+}
+
+.cms-widget.movemode.resizemode{
+    outline:1px dotted orange !important;
+}
+
+
+.wesley-cmsnav-widget:hover
+{
+	/*opacity:0.9;*/
+}
+
+.wesley-cmsnav-widget.active-widget{
+	/*opacity:1.0;*/
+	z-index:900;
+    outline:1px dotted blue
+}
+
+
+.wesley-cmsnav-widget:hover .wesley-cmsnav-widget-toolbar
+{
+	z-index:901;
+	visibility:visible;
+	position:relative;
+	opacity:0.95;
+    /*background:#fff;*/
+}
+
+
+.wesley-cmsnav-widget:hover .wesley-cmsnav-widget-toolbar:hover ul:hover li
+{
+    visibility:visible;
+}
+
+.wesley-cmsnav-widget:hover .wesley-cmsnav-widget-toolbar ul:hover
+{
+    background:#fff;    
+}
+
+
+.wesley-cmsnav-widget-toolbar
+{
+	/*width:100%;*/
+    /*width:100px;
+    float:right;*/
+	height:25px;
+	/*background: url("/admin/modules/pages/images/wesley-cms-toolbar.gif") repeat scroll 0 0 transparent;*/
+	/*border-bottom:1px solid #BBB9BA;*/
+    border-bottom:1px solid transparent;
+	z-index:0;
+	visibility:hidden;
+	margin-bottom: -26px;
+    position: absolute;
+    background:transparent;
+    /*width:100%;*/
+    float:right;
+	/*opacity:0.5;*/
+}
+
+.wesley-cmsnav-widget-toolbar ul li
+{
+    visibility:hidden;
+}
+
+.wesley-cmsnav-widget-toolbar span
+{
+    visibility:hidden;    
+}
+
+.hoverhighlight{
+    /*outline:1px solid #2381d0;*/
+    box-shadow:0 0 3px 3px #2381d0;
+	/*border:1px solid #000;*/
+}
+
+.highlight{
+    outline:1px solid #c2ea6c;
+	/*border:1px solid #000;*/
+}
+
+.wesley-cmsnav-widget-toolbar .wesley-cmsnav-rightbuttons
+{
+    border-left:1px solid transparent;
+}
+
+.wesley-cmsnav-widget-content
+{
+	background:transparent;
+	height: 100%;
+    width: 100%;
+	/*margin-top:-26px;*/
+}
+
+.wesley-file-drop
+{
+	height: 100%;
+    width: 100%;
+}
+
+/** DRAGABLE COMBINED WITH RESIZABLE POSITIONING
+**********************************************************************************/
+
+.ui-draggable{
+	position:relative;
+}
+
+.ui-resizable{
+	position:relative;
+}
+
+/** Widget File Manager Panel Styles
+**********************************************************************************/
+table.panel-filemanager tr th
+{	
+	border-bottom:1px solid #BBB9BA;
+	padding:3px;
+	padding:3px;
+}
+table.panel-filemanager tr td
+{
+	border-bottom:1px solid #BBB9BA;
+	padding:3px;
+	/*overflow:hidden;*/
+}
+
+.draggable-image{
+	z-index:901;
+}
+
+img.ui-draggable-dragging
+{
+	width:auto;
+	height:auto;
+}
+
+.filemanager-panel-path
+{
+	border: 1px solid #CCCCCC;
+    border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+    height: 17px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 3px;
+    padding: 0 5px;
+    width: 75%;
+}
+
+.filemanager-panel-details
+{
+	width:10%;
+	overflow:hidden;
+}
+
+.fileupload-modal{
+    background: none repeat scroll 0 0 #FFFFFF;
+    height: 197px;
+    opacity: 0.95;
+    padding: 10px;
+    position: absolute;
+    /*top: 0;*/
+    width: 72.4%;
+    z-index: 901;
+    border-right:1px solid #BBB9BA;
+	margin-top:26px;
+}
+
+/*
+a.file:hover{ text-decoration:underline; }
+span.deletefile:hover{
+	text-decoration:underline;
+	cursor:pointer;
+}
+tr.filerow:hover td { background-color:#fff; color:#000; }
+#dirdetails{ margin-left:10px; }
+#newdirectory{ cursor:pointer; }
+table.customer-filemanager tr td {height:15px;}
+*/
+
+/** BUTTONS
+**********************************************************************************/
+/* stylish buttons with rounded corners */
+.wesbutton {border: 1px solid #00487a; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; background: #0567ad url("../images/button.gif") repeat-x; padding: 5px 9px 5px; text-shadow: #00487a 1px 1px 0; color: #fff; cursor: pointer;}
+.wesbutton:hover,
+.wesbutton:focus,
+.wesbutton:active {border-color: #272727; background: #2a2a2a url("../images/altbutton.gif") repeat-x; text-shadow: #000 1px 1px 0; color: #fff;}
+
+
+/* alternative colors 
+.altbox .button {border: 1px solid #272727; background: #2a2a2a url("../images/altbutton.gif") repeat-x; text-shadow: #000 1px 1px 0;}
+.altbox .button:hover,
+.altbox .button:focus,
+.altbox .button:active {border-color: #00487a; background: #0567ad url("../images/button.gif") repeat-x; text-shadow: #00487a 1px 1px 0; color: #fff;}
+.altbutton {border: 1px solid #272727; background: #2a2a2a url("../images/altbutton.gif") repeat-x; text-shadow: #000 1px 1px 0;}
+.altbutton:hover,
+.altbutton:focus,
+.altbutton:active {border-color: #00487a; background: #0567ad url("../images/button.gif") repeat-x; text-shadow: #00487a 1px 1px 0; color: #fff;}
+.altbox .altbutton {border: 1px solid #00487a; background: #0567ad url("../images/button.gif") repeat-x; text-shadow: #00487a 1px 1px 0;}
+.altbox .altbutton:hover,
+.altbox .altbutton:focus,
+.altbox .altbutton:active {border-color: #272727; background: #2a2a2a url("../images/altbutton.gif") repeat-x; text-shadow: #000 1px 1px 0; color: #fff;}
+*/
+
+/** IMPROMPTU PROMPT STYLES
+**********************************************************************************/
+.jqifade{
+	position: absolute;
+	background-color: #aaaaaa;
+}
+div.jqi{
+	width: 400px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	position: absolute;
+	background-color: #ffffff;
+	font-size: 11px;
+	text-align: left;
+	border: solid 1px #eeeeee;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	padding: 7px;
+}
+div.jqi .jqicontainer{
+	font-weight: bold;
+}
+div.jqi .jqiclose{
+	position: absolute;
+	top: 4px; right: -2px;
+	width: 18px;
+	cursor: default;
+	color: #bbbbbb;
+	font-weight: bold;
+}
+div.jqi .jqimessage{
+	padding: 10px;
+	line-height: 20px;
+	color: #444444;
+}
+div.jqi .jqibuttons{
+	text-align: right;
+	padding: 5px 0 5px 0;
+	border: solid 1px #eeeeee;
+	background-color: #f4f4f4;
+}
+div.jqi button{
+	padding: 3px 10px;
+	margin: 0 10px;
+	background-color: #2F6073;
+	border: solid 1px #f4f4f4;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 12px;
+}
+div.jqi button:hover{
+	background-color: #728A8C;
+}
+div.jqi button.jqidefaultbutton{
+	background-color: #BF5E26;
+}
+.jqiwarning .jqi .jqibuttons{
+	background-color: #BF5E26;
+}
+
+
+/** Widget Slideshow Styles
+**********************************************************************************/
+.slideshow-wrapper
+{
+	width:100% !important; 
+	height:100% !important;
+}
+
+.slideshow-wrapper img, .slideshow-wrapper a, .slideshow-wrapper a img
+{
+	width:100% !important;
+}
+
+.slideshow-wrapper a span
+{
+	background-color:#222;
+	color: #FFFFFF;
+    display: block;
+    font-size: 11px;
+    padding: 1%;
+    position: absolute;
+    z-index: 2;	
+	top:100px;
+	left:0px;
+}
+
+
+
+.slideshow-nav-wrapper
+{
+	z-index: 100;
+	position: absolute;
+	top:0;
+	display:block;
+	/*width:100%;*/
+}
+
+.slideshow-nav-wrapper a
+{
+	background-color:#222;
+	color: #FFFFFF;
+    display: block;
+    font-size: 11px;
+	float:left;	
+	/*padding:1%;*/
+    padding:10px;
+    margin:0 1px 0 0;
+	/*margin:1%;*/
+	opacity:0.7;
+}
+
+.slideshow-nav-wrapper a
+{
+	opacity:1;
+}
+
+.slideshow-nav-add 
+{
+	bottom: 0;
+	display: block;
+	margin: 0 1% 1% 0;
+	position: absolute;
+	right: 0;
+	z-index: 200;
+}
+
+/** Widget Slideshow Pane Styles
+**********************************************************************************/
+ul.slide-sort
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0 3px 0;
+	border-bottom:1px solid #BBB9BA;
+}
+
+ul.slide-sort li
+{
+	margin: 3px 0px 0px 3px;
+	padding: 0px;
+	float: left;
+	width: 100px;
+	height: 40px;
+	text-align: center;
+	background:#fff;
+	overflow:hidden;
+	border:1px solid #222;
+}
+
+ul.slide-sort li img
+{ 
+	width:100%; 
+}
+ul.slide-sort li span
+{
+	
+	background: none repeat scroll 0 0 #222222;
+    color: #FFFFFF;
+    display: block;
+    font-size: 18px;
+    height: 29px;
+    line-height: 28px;
+    margin: 5px auto -34px;
+    opacity: 0.5;
+    position: relative;
+    text-align: center;
+    width: 40px;
+	
+}
+
+.ui-state-disabled{ opacity: 1; }
+
+textarea.wesley-widget-text-textarea{
+    width:100%;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    background:transparent;
+    border:0px;
+}
+
+.wesley-widget-text-div{
+    width:100%;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    background:transparent;
+    border:0px;
+    position:relative;
+}
+
+span.cke_skin_kama{
+    padding:0px !important;
+    border:0px !important;
+    border-radius:0px !important;
+}
+
+span.cke_ltr{
+    background-color:transparent !important;
+    padding:0px !important;
+}
+
+.cke_show_borders{
+    background-color:transparent !important;
+}
+
+.cke_skin_kama .cke_contents iframe{
+    background-color:transparent !important;
+    background:none !important;
+}
+
+.cke_skin_kama .cke_wrapper{
+    background:none !important;
+}

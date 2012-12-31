@@ -1,0 +1,971 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<css xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="css.xsd">
+  <collections>
+
+    <collection name="Background">
+      <group name="Background">
+        <element name="background-attachment">
+          <entries>
+            <entry>scroll</entry>
+            <entry>fixed</entry>
+          </entries>
+        </element>
+        <element name="background-color">
+          <entries>
+            <entry>color...</entry>
+            <list>colors</list>
+          </entries>
+        </element>
+        <element name="background-image">
+          <entries>
+            <entry>file...</entry>
+          </entries>
+        </element>
+        <element name="background-position">
+          <entries>
+            <entry>position...</entry>
+            <entry>top left</entry>
+            <entry>top center</entry>
+            <entry>top right</entry>
+            <entry>center left</entry>
+            <entry>center center</entry>
+            <entry>center right</entry>
+            <entry>bottom left</entry>
+            <entry>bottom center</entry>
+            <entry>bottom right</entry>
+          </entries>
+        </element>
+        <element name="background-repeat">
+          <entries>
+            <entry>repeat</entry>
+            <entry>repeat-x</entry>
+            <entry>repeat-y</entry>
+            <entry>no-repeat</entry>
+          </entries>
+        </element>
+      </group>
+    </collection>
+
+    <collection name="Border">
+      <group name="Border">
+        <element name="border-width">
+          <entries>
+            <entry>size...</entry>
+            <entry>thin</entry>
+            <entry>medium</entry>
+            <entry>thick</entry>
+          </entries>
+        </element>
+        <element name="border-style">
+          <entries>
+            <list>border-styles</list>
+          </entries>
+        </element>
+        <element name="border-color">
+          <entries>
+            <entry>color...</entry>
+            <list>colors</list>
+          </entries>
+        </element>
+      </group>
+      <group name="Border-top">
+        <element name="border-top-width">
+          <entries>
+            <entry>size...</entry>
+            <entry>thin</entry>
+            <entry>medium</entry>
+            <entry>thick</entry>
+          </entries>
+        </element>
+        <element name="border-top-style">
+          <entries>
+            <list>border-styles</list>
+          </entries>
+        </element>
+        <element name="border-top-color">
+          <entries>
+            <entry>color...</entry>
+            <list>colors</list>
+          </entries>
+        </element>
+      </group>
+      <group name="Border-left">
+        <element name="border-left-width">
+          <entries>
+            <entry>size...</entry>
+            <entry>thin</entry>
+            <entry>medium</entry>
+            <entry>thick</entry>
+          </entries>
+        </element>
+        <element name="border-left-style">
+          <entries>
+            <list>border-styles</list>
+          </entries>
+        </element>
+        <element name="border-left-color">
+          <entries>
+            <entry>color...</entry>
+            <list>colors</list>
+          </entries>
+        </element>
+      </group>
+      <group name="Border-bottom">
+        <element name="border-bottom-width">
+          <entries>
+            <entry>size...</entry>
+            <entry>thin</entry>
+            <entry>medium</entry>
+            <entry>thick</entry>
+          </entries>
+        </element>
+        <element name="border-bottom-style">
+          <entries>
+            <list>border-styles</list>
+          </entries>
+        </element>
+        <element name="border-bottom-color">
+          <entries>
+            <entry>color...</entry>
+            <list>colors</list>
+          </entries>
+        </element>
+      </group>
+      <group name="Border-right">
+        <element name="border-right-width">
+          <entries>
+            <entry>size...</entry>
+            <entry>thin</entry>
+            <entry>medium</entry>
+            <entry>thick</entry>
+          </entries>
+        </element>
+        <element name="border-right-style">
+          <entries>
+            <list>border-styles</list>
+          </entries>
+        </element>
+        <element name="border-right-color">
+          <entries>
+            <entry>color...</entry>
+            <list>colors</list>
+          </entries>
+        </element>
+      </group>
+    </collection>
+
+    <collection name="Classification">
+      <group name="Classification">
+        <element name="clear">
+          <entries>
+            <entry>left</entry>
+            <entry>right</entry>
+            <entry>both</entry>
+            <entry>none</entry>
+          </entries>
+        </element>
+        <element name="curor">
+          <entries>
+            <entry>file...</entry>
+            <entry>auto</entry>
+            <entry>crosshair</entry>
+            <entry>default</entry>
+            <entry>pointer</entry>
+            <entry>move</entry>
+            <entry>e-resize</entry>
+            <entry>ne-resize</entry>
+            <entry>nw-resize</entry>
+            <entry>n-resize</entry>
+            <entry>se-resize</entry>
+            <entry>sw-resize</entry>
+            <entry>s-resize</entry>
+            <entry>w-resize</entry>
+            <entry>text</entry>
+            <entry>wait</entry>
+            <entry>help</entry>
+          </entries>
+        </element>
+        <element name="display">
+          <entries>
+            <entry>none</entry>
+            <entry>inline</entry>
+            <entry>block</entry>
+            <entry>list-item</entry>
+            <entry>run-in</entry>
+            <entry>compact</entry>
+            <entry>marker</entry>
+            <entry>table</entry>
+            <entry>inline-table</entry>
+            <entry>table-row-group</entry>
+            <entry>table-header-group</entry>
+            <entry>table-footer-group</entry>
+            <entry>table-row</entry>
+            <entry>table-column-group</entry>
+            <entry>table-column</entry>
+            <entry>table-cell</entry>
+            <entry>table-caption</entry>
+          </entries>
+        </element>
+        <element name="float">
+          <entries>
+            <entry>none</entry>
+            <entry>left</entry>
+            <entry>right</entry>
+          </entries>
+        </element>
+        <element name="position">
+          <entries>
+            <entry>static</entry>
+            <entry>relative</entry>
+            <entry>absolute</entry>
+            <entry>fixed</entry>
+          </entries>
+        </element>
+        <element name="visibility">
+          <entries>
+            <entry>visible</entry>
+            <entry>hidden</entry>
+<!--        <entry>collapse</entry>     -->
+          </entries>
+        </element>
+      </group>
+    </collection>
+
+    <collection name="Content">
+      <group name="Content">
+        <element name="content">
+          <entries>
+            <entry>file...</entry>
+            <entry>string...</entry>
+            <entry>open-quote</entry>
+            <entry>close-quote</entry>
+            <entry>no-open-quote</entry>
+            <entry>no-close-quote</entry>
+          </entries>
+        </element>
+        <element name="counter-increment">
+          <entries>
+            <entry>counter...</entry>
+            <entry>none</entry>
+          </entries>
+        </element>
+        <element name="counter-reset">
+          <entries>
+            <entry>counter...</entry>
+            <entry>none</entry>
+          </entries>
+        </element>
+        <element name="quotes">
+          <entries>
+            <entry>quotes...</entry>
+            <entry>none</entry>
+          </entries>
+        </element>
+      </group>
+    </collection>
+
+    <collection name="Dimension">
+      <group name="Dimension">
+        <element name="height">
+          <entries>
+            <entry>length...</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+        <element name="width">
+          <entries>
+            <entry>length...</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+        <element name="min-height">
+          <entries>
+            <entry>length...</entry>
+          </entries>
+        </element>
+        <element name="min-width">
+          <entries>
+            <entry>length...</entry>
+          </entries>
+        </element>
+        <element name="max-height">
+          <entries>
+            <entry>length...</entry>
+            <entry>none</entry>
+          </entries>
+        </element>
+        <element name="max-width">
+          <entries>
+            <entry>length...</entry>
+            <entry>none</entry>
+          </entries>
+        </element>
+        <element name="line-height">
+          <entries>
+            <entry>length...</entry>
+            <entry>number...</entry>
+            <entry>normal</entry>
+          </entries>
+        </element>
+      </group>
+    </collection>
+
+    <collection name="Font">
+      <group name="Font">
+        <element name="font">
+          <entries>
+            <entry>caption</entry>
+            <entry>icon</entry>
+            <entry>menu</entry>
+            <entry>message-box</entry>
+            <entry>small-caption</entry>
+            <entry>status-bar</entry>
+          </entries>
+        </element>
+        <element name="font-family">
+          <entries>
+<!--        <entry>fonts...</entry> -->
+            <list>font-family</list>
+          </entries>
+        </element>
+        <element name="font-size">
+          <entries>
+            <entry>length...</entry>
+            <entry>xx-small</entry>
+            <entry>x-small</entry>
+            <entry>small</entry>
+            <entry>medium</entry>
+            <entry>large</entry>
+            <entry>x-large</entry>
+            <entry>xx-large</entry>
+            <entry>smaller</entry>
+            <entry>larger</entry>
+          </entries>
+        </element>
+        <element name="font-size-adjust">
+          <entries>
+            <entry>number...</entry>
+            <entry>none</entry>
+          </entries>
+        </element>
+        <element name="font-stretch">
+          <entries>
+            <entry>normal</entry>
+            <entry>wider</entry>
+            <entry>narrower</entry>
+            <entry>ultra-condensed</entry>
+            <entry>extra-condensed</entry>
+            <entry>condensed</entry>
+            <entry>semi-condensed</entry>
+            <entry>semi-expanded</entry>
+            <entry>expanded</entry>
+            <entry>extra-expanded</entry>
+            <entry>ultra-expanded</entry>
+          </entries>
+        </element>
+        <element name="font-style">
+          <entries>
+            <entry>normal</entry>
+            <entry>italic</entry>
+            <entry>oblique</entry>
+          </entries>
+        </element>
+        <element name="font-variant">
+          <entries>
+            <entry>normal</entry>
+            <entry>small-caps</entry>
+          </entries>
+        </element>
+        <element name="font-weight">
+          <entries>
+            <entry>normal</entry>
+            <entry>bold</entry>
+            <entry>bolder</entry>
+            <entry>lighter</entry>
+            <entry>100</entry>
+            <entry>200</entry>
+            <entry>300</entry>
+            <entry>400</entry>
+            <entry>500</entry>
+            <entry>600</entry>
+            <entry>700</entry>
+            <entry>800</entry>
+            <entry>900</entry>
+          </entries>
+        </element>
+      </group>
+    </collection>
+
+    <collection name="List">
+      <group name="List">
+        <element name="list-style-image">
+          <entries>
+            <entry>file...</entry>
+            <entry>none</entry>
+          </entries>
+        </element>
+        <element name="list-style-position">
+          <entries>
+            <entry>inside</entry>
+            <entry>outside</entry>
+          </entries>
+        </element>
+        <element name="list-style-type">
+          <entries>
+            <entry>none</entry>
+            <entry>disc</entry>
+            <entry>circle</entry>
+            <entry>square</entry>
+            <entry>decimal</entry>
+            <entry>decimal-leading-zero</entry>
+            <entry>lower-roman</entry>
+            <entry>upper-roman</entry>
+            <entry>lower-alpha</entry>
+            <entry>upper-alpha</entry>
+            <entry>lower-greek</entry>
+            <entry>lower-latin</entry>
+            <entry>upper-latin</entry>
+            <entry>hebrew</entry>
+            <entry>armenian</entry>
+            <entry>georgian</entry>
+            <entry>cjk-ideographic</entry>
+            <entry>hiragana</entry>
+            <entry>katakana</entry>
+            <entry>hiragana-iroha</entry>
+            <entry>katakana-iroha</entry>
+          </entries>
+        </element>
+        <element name="marker-offset">
+          <entries>
+            <entry>length...</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+      </group>
+    </collection>
+
+    <collection name="Margin">
+      <group name="Margin">
+        <element name="margin">
+          <entries>
+            <entry>length...</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+        <element name="margin-bottom">
+          <entries>
+            <entry>length...</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+        <element name="margin-left">
+          <entries>
+            <entry>length...</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+        <element name="margin-right">
+          <entries>
+            <entry>length...</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+        <element name="margin-top">
+          <entries>
+            <entry>length...</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+      </group>
+    </collection>
+
+    <collection name="Outline">
+      <group name="Outline">
+        <element name="outline-color">
+          <entries>
+            <entry>color...</entry>
+            <list>colors</list>
+          </entries>
+        </element>
+        <element name="outline-style">
+          <entries>
+            <list>border-styles</list>
+          </entries>
+        </element>
+        <element name="outline-width">
+          <entries>
+            <entry>length...</entry>
+            <entry>thin</entry>
+            <entry>medium</entry>
+            <entry>thick</entry>
+          </entries>
+        </element>
+      </group>
+    </collection>
+
+    <collection name="Padding">
+      <group name="Padding">
+        <element name="padding">
+          <entries>
+            <entry>length...</entry>
+          </entries>
+        </element>
+        <element name="padding-bottom">
+          <entries>
+            <entry>length...</entry>
+          </entries>
+        </element>
+        <element name="padding-left">
+          <entries>
+            <entry>length...</entry>
+          </entries>
+        </element>
+        <element name="padding-right">
+          <entries>
+            <entry>length...</entry>
+          </entries>
+        </element>
+        <element name="padding-top">
+          <entries>
+            <entry>length...</entry>
+          </entries>
+        </element>
+      </group>
+    </collection>
+
+    <collection name=" Position">
+      <group name="Position">
+        <element name="top">
+          <entries>
+            <entry>length...</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+        <element name="left">
+          <entries>
+            <entry>length...</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+        <element name="right">
+          <entries>
+            <entry>length...</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+        <element name="bottom">
+          <entries>
+            <entry>length...</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+        <element name="clip">
+          <entries>
+            <entry>shape...</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+        <element name="overflow">
+          <entries>
+            <entry>visible</entry>
+            <entry>hidden</entry>
+            <entry>scroll</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+        <element name="vertical-align">
+          <entries>
+            <entry>length...</entry>
+            <entry>baseline</entry>
+            <entry>sub</entry>
+            <entry>super</entry>
+            <entry>top</entry>
+            <entry>text-top</entry>
+            <entry>middle</entry>
+            <entry>bottom</entry>
+            <entry>text-bottom</entry>
+          </entries>
+        </element>
+        <element name="z-index">
+          <entries>
+            <entry>number...</entry>
+            <entry>auto</entry>
+          </entries>
+        </element>
+      </group>
+    </collection>
+
+    <collection name="Table">
+      <group name="Table">
+        <element name="border-collapse">
+          <entries>
+            <entry>collapse</entry>
+            <entry>separate</entry>
+          </entries>
+        </element>
+        <element name="border-spacing">
+          <entries>
+            <entry>length...</entry>
+          </entries>
+        </element>
+        <element name="caption-side">
+          <entries>
+            <entry>top</entry>
+            <entry>left</entry>
+            <entry>right</entry>
+            <entry>bottom</entry>
+          </entries>
+        </element>
+        <element name="empty-cells">
+          <entries>
+            <entry>show</entry>
+            <entry>hide</entry>
+          </entries>
+        </element>
+        <element name="table-layout">
+          <entries>
+            <entry>auto</entry>
+            <entry>fixed</entry>
+          </entries>
+        </element>
+      </group>
+    </collection>
+
+    <collection name="Text">
+      <group name="Text">
+        <element name="color">
+          <entries>
+            <entry>color...</entry>
+            <list>colors</list>
+          </entries>
+        </element>
+        <element name="direction">
+          <entries>
+            <entry>ltr</entry>
+            <entry>rtl</entry>
+          </entries>
+        </element>
+        <element name="letter-spacing">
+          <entries>
+            <entry>length...</entry>
+            <entry>normal</entry>
+          </entries>
+        </element>
+        <element name="text-align">
+          <entries>
+            <entry>left</entry>
+            <entry>right</entry>
+            <entry>center</entry>
+            <entry>justify</entry>
+          </entries>
+        </element>
+        <element name="text-decoration">
+          <entries>
+            <entry>none</entry>
+            <entry>underline</entry>
+            <entry>overline</entry>
+            <entry>line-through</entry>
+            <entry>blink</entry>
+          </entries>
+        </element>
+        <element name="text-indent">
+          <entries>
+            <entry>length...</entry>
+          </entries>
+        </element>
+        <element name="text-shadow">
+          <entries>
+            <entry>color...</entry>
+            <entry>length...</entry>
+            <entry>none</entry>
+            <list>colors</list>
+          </entries>
+        </element>
+        <element name="text-transform">
+          <entries>
+            <entry>none</entry>
+            <entry>capitalize</entry>
+            <entry>uppercase</entry>
+            <entry>lowercase</entry>
+          </entries>
+        </element>
+        <element name="unicode-bidi">
+          <entries>
+            <entry>normal</entry>
+            <entry>embed</entry>
+            <entry>bidi-override</entry>
+          </entries>
+        </element>
+        <element name="white-space">
+          <entries>
+            <entry>normal</entry>
+            <entry>pre</entry>
+            <entry>nowrap</entry>
+          </entries>
+        </element>
+        <element name="word-spacing">
+          <entries>
+            <entry>length...</entry>
+            <entry>normal</entry>
+          </entries>
+        </element>
+      </group>
+    </collection>
+
+  </collections>
+
+  <entry-lists>
+    <entry-list name="colors">
+      <item>aliceblue</item>
+      <item>antiquewhite</item>
+      <item>aqua</item>
+      <item>aquamarine</item>
+      <item>azure</item>
+      <item>beige</item>
+      <item>bisque</item>
+      <item>black</item>
+      <item>blanchedalmond</item>
+      <item>blue</item>
+      <item>blueviolet</item>
+      <item>brown</item>
+      <item>burlywood</item>
+      <item>cadetblue</item>
+      <item>chartreuse</item>
+      <item>chocolate</item>
+      <item>coral</item>
+      <item>cornflowerblue</item>
+      <item>cornsilk</item>
+      <item>crimson</item>
+      <item>cyan</item>
+      <item>darkblue</item>
+      <item>darkcyan</item>
+      <item>darkgoldenrod</item>
+      <item>darkgray</item>
+      <item>darkgreen</item>
+      <item>darkkhaki</item>
+      <item>darkmagenta</item>
+      <item>darkolivegreen</item>
+      <item>darkorange</item>
+      <item>darkorchid</item>
+      <item>darkred</item>
+      <item>darksalmon</item>
+      <item>darkseagreen</item>
+      <item>darkslateblue</item>
+      <item>darkslategray</item>
+      <item>darkturquoise</item>
+      <item>darkviolet</item>
+      <item>deeppink</item>
+      <item>deepskyblue</item>
+      <item>dimgray</item>
+      <item>dodgerblue</item>
+<!--  <item>Feldspar</item>  -->
+      <item>firebrick</item>
+      <item>floralwhite</item>
+      <item>forestgreen</item>
+      <item>fuchsia</item>
+      <item>gainsboro</item>
+      <item>ghostwhite</item>
+      <item>gold</item>
+      <item>goldenrod</item>
+      <item>gray</item>
+      <item>green</item>
+      <item>greenyellow</item>
+      <item>honeydew</item>
+      <item>hotpink</item>
+      <item>indianred</item>
+      <item>indigo</item>
+      <item>ivory</item>
+      <item>khaki</item>
+      <item>lavender</item>
+      <item>lavenderblush</item>
+      <item>lawngreen</item>
+      <item>lemonchiffon</item>
+      <item>lightblue</item>
+      <item>lightcoral</item>
+      <item>lightcyan</item>
+      <item>lightgoldenrodyellow</item>
+      <item>lightgrey</item>
+      <item>lightgreen</item>
+      <item>lightpink</item>
+      <item>lightsalmon</item>
+      <item>lightseagreen</item>
+      <item>lightskyblue</item>
+<!--  <item>LightSlateBlue</item>  -->
+      <item>lightslategray</item>
+      <item>lightsteelblue</item>
+      <item>lightyellow</item>
+      <item>lime</item>
+      <item>limegreen</item>
+      <item>linen</item>
+      <item>magenta</item>
+      <item>maroon</item>
+      <item>mediumaquamarine</item>
+      <item>mediumblue</item>
+      <item>mediumorchid</item>
+      <item>mediumpurple</item>
+      <item>mediumseagreen</item>
+      <item>mediumslateblue</item>
+      <item>mediumspringgreen</item>
+      <item>mediumturquoise</item>
+      <item>mediumvioletred</item>
+      <item>midnightblue</item>
+      <item>mintcream</item>
+      <item>mistyrose</item>
+      <item>moccasin</item>
+      <item>navajowhite</item>
+      <item>navy</item>
+      <item>oldlace</item>
+      <item>olive</item>
+      <item>olivedrab</item>
+      <item>orange</item>
+      <item>orangered</item>
+      <item>orchid</item>
+      <item>palegoldenrod</item>
+      <item>palegreen</item>
+      <item>paleturquoise</item>
+      <item>palevioletred</item>
+      <item>papayawhip</item>
+      <item>peachpuff</item>
+      <item>peru</item>
+      <item>pink</item>
+      <item>plum</item>
+      <item>powderblue</item>
+      <item>purple</item>
+      <item>red</item>
+      <item>rosybrown</item>
+      <item>royalblue</item>
+      <item>saddlebrown</item>
+      <item>salmon</item>
+      <item>sandybrown</item>
+      <item>seagreen</item>
+      <item>seashell</item>
+      <item>sienna</item>
+      <item>silver</item>
+      <item>skyblue</item>
+      <item>slateblue</item>
+      <item>slategray</item>
+      <item>snow</item>
+      <item>springgreen</item>
+      <item>steelblue</item>
+      <item>tan</item>
+      <item>teal</item>
+      <item>thistle</item>
+      <item>tomato</item>
+      <item>transparent</item>
+      <item>turquoise</item>
+      <item>violet</item>
+<!--  <item>VioletRed</item>  -->
+      <item>wheat</item>
+      <item>white</item>
+      <item>whitesmoke</item>
+      <item>yellow</item>
+      <item>yellowgreen</item>
+    </entry-list>
+
+    <entry-list name="border-styles">
+      <item>none</item>
+<!--  <item>Hidden</item> -->
+      <item>dotted</item>
+      <item>dashed</item>
+      <item>solid</item>
+      <item>double</item>
+      <item>groove</item>
+      <item>ridge</item>
+      <item>inset</item>
+      <item>outset</item>
+    </entry-list>
+
+    <entry-list name="font-family">
+      <item>serif</item>
+      <item>sans-serif</item>
+      <item>cursive</item>
+      <item>fantasy</item>
+      <item>monospace</item>
+      <item>aapex</item>
+      <item>aardvark</item>
+      <item>albertus extra bold</item>
+      <item>albertus medium</item>
+      <item>algerian</item>
+      <item>antique olive</item>
+      <item>arial</item>
+      <item>arial black</item>
+      <item>arial mt condensed light</item>
+      <item>arial narrow</item>
+      <item>arial rounded mt bold</item>
+      <item>bodoni mt ultra bold</item>
+      <item>book antiqua</item>
+      <item>bookman old style</item>
+      <item>braggadocio</item>
+      <item>britannic bold</item>
+      <item>brooklyn</item>
+      <item>brush script mt</item>
+      <item>carleton</item>
+      <item>century gothic</item>
+      <item>century schoolbook</item>
+      <item>charcoal</item>
+      <item>chicago</item>
+      <item>cg times</item>
+      <item>colonna mt</item>
+      <item>comic sans ms</item>
+      <item>coronet</item>
+      <item>courier</item>
+      <item>courier new</item>
+      <item>cursive elegant</item>
+      <item>dawncastle</item>
+      <item>desdemona</item>
+      <item>donata</item>
+      <item>erie</item>
+      <item>expo</item>
+      <item>footlight mt light</item>
+      <item>fritzquad</item>
+      <item>garamond</item>
+      <item>geneva</item>
+      <item>georgia</item>
+      <item>gilbertultrabold</item>
+      <item>gill sans condensed bold</item>
+      <item>gv terminal</item>
+      <item>haettenschweiler</item>
+      <item>helvetica</item>
+      <item>humanst521 cn bt</item>
+      <item>impact</item>
+      <item>kino mt</item>
+      <item>klang mt</item>
+      <item>lansbury</item>
+      <item>letter gothic</item>
+      <item>lincoln</item>
+      <item>marlett</item>
+      <item>matura mt script capitals</item>
+      <item>merlin</item>
+      <item>micro</item>
+      <item>minion web</item>
+      <item>modern</item>
+      <item>monaco</item>
+      <item>monotype.com</item>
+      <item>motor</item>
+      <item>ms-dos cp 437</item>
+      <item>ms linedraw</item>
+      <item>ner berolina mt</item>
+      <item>new york</item>
+      <item>old english</item>
+      <item>old english text mt</item>
+      <item>ozhandicraft bt</item>
+      <item>palatino</item>
+      <item>playbill</item>
+      <item>script mt bold</item>
+      <item>small fonts</item>
+      <item>sonoma</item>
+      <item>sonoma italic</item>
+      <item>swiss721 blkex bt</item>
+      <item>terminal</item>
+      <item>times</item>
+      <item>times new roman</item>
+      <item>trebuchet ms</item>
+      <item>univers</item>
+      <item>univers condensed</item>
+      <item>verdana</item>
+      <item>wide latin</item>
+      <item>zap chance</item>
+    </entry-list>
+  </entry-lists>
+
+</css>

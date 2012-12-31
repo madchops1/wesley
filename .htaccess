@@ -51,21 +51,20 @@ RewriteEngine On
 RewriteCond %{HTTP_USER_AGENT} ^.*internal\ dummy\ connection.*$ [NC]
 RewriteRule .* - [F,L]
 
-# ACTUAL DOMAIN METHOD
+# ACTUAL DOMAIN METHOD (yourdomainhere.com)
 RewriteCond %{REQUEST_URI} !^/admin [NC]
 RewriteCond %{REQUEST_URI} !^/themes [NC]
 RewriteCond %{REQUEST_URI} !^/uploads [NC]
 RewriteCond %{HTTP_HOST} !^([^/\.]+).wescms.com(.*) [NC]
 RewriteRule ^(.*)$ index.php?website=%{HTTP_HOST}&request=%{THE_REQUEST} [NC,L]
 
-# SUBDOMAIN METHOD
+# SUBDOMAIN METHOD (yourwebsitehere.wescms.com)
 RewriteCond %{HTTP_HOST} !^www. [NC]
 RewriteCond %{REQUEST_URI} !^/admin [NC]
 RewriteCond %{REQUEST_URI} !^/themes [NC]
 RewriteCond %{REQUEST_URI} !^/uploads [NC]
 RewriteCond %{HTTP_HOST} ^([^/\.]+).wescms.com(.*) [NC]
 RewriteRule ^(.*)$ index.php?website=%1&request=%{THE_REQUEST} [NC,L]
-
 
 # WWW
 #RewriteCond %{HTTP_HOST} !^www.wescms.com$ [NC]

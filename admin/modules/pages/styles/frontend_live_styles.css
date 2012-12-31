@@ -1,0 +1,62 @@
+/** FRONTEND LIVE STYLES ARE INTENDED TO HOLD TOGETHER SOME OF THE MOST IMPORTANT CSS OF WIDGETS **/
+
+.wesley-cms-widget
+{
+	float:left;
+	overflow:hidden;
+	background:transparent;
+	display:block;
+	position:relative;
+}
+
+/* SLIDESHOW STYLES
+******************************************************************/
+.slideshow-wrapper
+{
+	width:100% !important; 
+	height:100% !important;
+}
+
+.slideshow-wrapper img, .slideshow-wrapper a, .slideshow-wrapper a img
+{
+	width:100% !important;
+}
+
+.slideshow-wrapper a span
+{
+	background-color:#222;
+	color: #FFFFFF;
+    display: block;
+    font-size: 11px;
+    padding: 1%;
+    position: absolute;
+    z-index: 2;	
+	top:75%;
+	left:2%;
+}
+
+.slideshow-nav-wrapper
+{
+	z-index: 100;
+	position: absolute;
+	top:0;
+	display:block;
+	width:100%;
+}
+
+.slideshow-nav-wrapper a
+{
+	background-color:#222;
+	color: #FFFFFF;
+    display: block;
+    font-size: 11px;
+	float:left;	
+	padding:1%;
+	margin:1%;
+	opacity:0.7;
+}
+
+.slideshow-nav-wrapper a
+{
+	opacity:1;
+}

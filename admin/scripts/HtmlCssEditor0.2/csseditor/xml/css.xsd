@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:element name="css">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="collections" />
+        <xs:element ref="entry-lists" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="collections">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="collection" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="collection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="group" maxOccurs="unbounded" />
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="group">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="element" maxOccurs="unbounded" />
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="element">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="entries" />
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="entries">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="entry" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="list" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="entry" type="xs:string" />
+
+  <xs:element name="entry-lists">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="entry-list" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="entry-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="item" maxOccurs="unbounded" />
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="item" type="xs:string" />
+
+</xs:schema>

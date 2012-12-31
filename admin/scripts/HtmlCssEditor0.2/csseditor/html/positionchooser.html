@@ -1,0 +1,63 @@
+
+<html>
+  <head>
+    <script type="text/javascript" src="../javascript/css.js"></script>
+    <script type="text/javascript" src="../javascript/css_position.js"></script>
+    <link rel="stylesheet" href="../style/css.css" type="text/css" />
+    <title>Choose position...</title>
+  </head>
+  <body onLoad="init()">
+    <form>
+      <table class="dialog">
+        <tr>
+          <td class="center">
+            <button onmousedown="minus('x')" onmouseup="stop()">-</button>
+            <input type="text" value="0" id="x" name="x" class="numberinput" />
+            <button onmousedown="plus('x')" onmouseup="stop()">+</button>
+          </td>
+          <td>
+            <select id="xunit">
+              <option value="px">px</option>
+              <option value="ex">ex</option>
+              <option value="pm">pm</option>
+              <option value="mm">mm</option>
+              <option value="cm">cm</option>
+              <option value="pc">pc</option>
+              <option value="in">in</option>
+              <option value="pt">pt</option>
+              <option value="%">%</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="center">
+            <button onmousedown="minus('y')" onmouseup="stop()">-</button>
+            <input type="text" value="0" id="y" name="y" class="numberinput" />
+            <button onmousedown="plus('y')" onmouseup="stop()">+</button>
+          </td>
+          <td>
+            <select id="yunit">
+              <option value="px">px</option>
+              <option value="ex">ex</option>
+              <option value="pm">pm</option>
+              <option value="mm">mm</option>
+              <option value="cm">cm</option>
+              <option value="pc">pc</option>
+              <option value="in">in</option>
+              <option value="pt">pt</option>
+              <option value="%">%</option>
+            </select>
+          </td>
+
+        </tr>
+        <tr>
+          <td colspan="2" class="center">
+            <button onClick="ok()">Ok</button>
+            <button onClick="cancel()">Cancel</button>
+          </td>
+        </tr>
+      </table>
+
+    </form>
+  </body>
+</html>
