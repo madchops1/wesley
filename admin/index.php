@@ -1,16 +1,11 @@
 <?php
 /*************************************************************************************************************************************
-*
-*	Wesley (TM), A Karl Steltenpohl Development LLC Product and Service
-*  	Copyright (c) 2011 Karl Steltenpohl Development LLC. All Rights Reserved.
-*	
-*	This file is part of Wesley (TM) Karl Steltenpohl Development LLC's Proprietary Software.
-*	Created and Developed By: Karl Steltenpohl
-*	
-*	Commercial License
-*	http://wesley.wescms.com/license
-*
-*************************************************************************************************************************************/
+ *
+ *	Wesley (TM)
+ *	A Karl Steltenpohl Development LLC Product
+ *	Copyright 2012, All Rights Reserved
+ *
+ *************************************************************************************************************************************/
 	 
 //var_dump($_SERVER);
 
@@ -42,10 +37,17 @@ if(isset($_GET["logout"]))
 // WEBSITE DROPDOWN ACTION
 if(isset($_POST['changewebsite']))
 {
+	
 	// NEW WEBSITE
 	if($_POST['changewebsite'] == 'new')
 	{
 	
+	}
+	// MAIN DASH
+	elseif($_POST['changewebsite'] == 'main_dashboard')
+	{	
+		$webiste_id = '';
+		header("Location: http://wescms.com/admin/index.php?session=".session_id()."");
 	}
 	// CHANGING WEBSITES
 	else
@@ -58,7 +60,7 @@ if(isset($_POST['changewebsite']))
 		{
 			header("Location: http://".$row['domain']."/admin/index.php?session=".session_id()."");
 		} else {
-			header("Location: http://".$row['subdomain'].".".$_SERVER['HTTP_HOST']."/admin/index.php?session=".session_id()."");
+			header("Location: http://".$row['subdomain'].".wescms.com/admin/index.php?session=".session_id()."");
 		}
 		exit();
 	}	
@@ -143,6 +145,7 @@ if(isset($_POST['changewebsite']))
 				</h1>
 				<form id='changewebsite' class='changewebsite' action='' method='post'>
 					<select name='changewebsite' class='website' id='website' onchange='this.form.submit();'>
+						<option value='main_dashboard'>Main Dashboard</option>
 						<?
 						$webSelect = 	"SELECT * FROM websites w ".
 										"LEFT JOIN website_permissions wp ON w.website_id=wp.website_id ".
@@ -180,7 +183,7 @@ if(isset($_POST['changewebsite']))
 				if($websiteDomain != ""){
 					echo '<a class="button visitsite" href="http://'.$websiteDomain.'/'.$homepageName.'/session/'.session_id().'/cms/1" target="_blank">Edit Website</a>';
 				} else {
-					echo '<a class="button visitsite" href="http://'.$websiteSubdomain.'.'.$_SERVER['HTTP_HOST'].'/'.$homepageName.'/session/'.session_id().'/cms/1" target="_blank">Edit Website</a>';
+					echo '<a class="button visitsite" href="http://'.$websiteSubdomain.'.wescms.com/'.$homepageName.'/session/'.session_id().'/cms/1" target="_blank">Edit Website</a>';
 				}
 				?>
 				
@@ -201,12 +204,13 @@ if(isset($_POST['changewebsite']))
 			<div class="inner-container clearfix">
 				<div id="h-wrap">
 					<div class="inner">
+						<?php if($websiteName != ""){ ?>
 						<h2>
-							<span class="h-ico ico-dashboard"><span>Main Dashboard</span></span>
+							<span class="h-ico ico-dashboard"><span><?=$websiteName ?> Main Dashboard</span></span>
 							<span class="h-arrow"></span>
 						</h2>
+						<?php } ?>
 						<ul class="clearfix">
-							<li><a class="h-ico ico-edit" href="?module=dashboard"><span><?=$websiteName ?>Dashboard</span></a></li>
 							
 							<?
 							// MODULE MENU

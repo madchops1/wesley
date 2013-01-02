@@ -1,16 +1,11 @@
 <?php
 /*************************************************************************************************************************************
-*
-*	Wesley (TM), A Karl Steltenpohl Development LLC Product and Service
-*  	Copyright (c) 2011 Karl Steltenpohl Development LLC. All Rights Reserved.
-*	
-*	This file is part of Karl Steltenpohl Development LLC's WES (Website Enterprise Software).
-*	Written By: Karl Steltenpohl
-*	
-*	Commercial License
-*	http://wesley.wescms.com/license
-*
-*************************************************************************************************************************************/
+ *
+ *	Wesley (TM)
+ *	A Karl Steltenpohl Development LLC Product
+ *	Copyright 2012, All Rights Reserved
+ *
+ *************************************************************************************************************************************/
 
 //ini_set('display_errors', 1); 
 //error_reporting(E_ERROR);
@@ -150,11 +145,11 @@ if(isset($_POST['retrieve']))
 							<?=report(urlRequest('message'),urlRequest('messageType')) ?>
 							<table cellspacing="0">
 								<tr>
-									<th><label for="username">Username:</label></th>
+									<th><label for="username">Username: </label></th>
 									<td><input class="txt" type="text" id="username" name="username" /></td>
 								</tr>
 								<tr>
-									<th><label for="password">Password:</label></th>
+									<th><label for="password">Password: </label></th>
 									<td><input class="txt pwd" type="password" id="password" name="password" /></td><!-- class error for wrong filled inputs -->
 								</tr>
 								<tr>
@@ -176,7 +171,7 @@ if(isset($_POST['retrieve']))
 							<?=report(urlRequest('message'),urlRequest('messageType')) ?>
 							<table cellspacing="0">
 								<tr>
-									<th><label for="some1">Email:</label></th>
+									<th><label for="some1">Email: </label></th>
 									<td><input class="txt" type="text" id="some1" name="some1" /></td>
 								</tr>
 								<tr>

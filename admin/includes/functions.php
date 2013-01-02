@@ -125,6 +125,9 @@ function recurse_copy($src,$dst)
 // SET INPUT - config mod_rewrite function = !IMPORTANT!
 function setInput()
 {
+	
+	//var_dump($_GET['request']);
+	
 	// EXPLODE THE REQUEST
 	if(isset($_GET['request']))
 	{	
