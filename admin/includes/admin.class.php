@@ -48,32 +48,6 @@ class Admin {
 		// Lowercase and clean username
 		$username = strtolower(preg_replace('/[^a-zA-Z0-9]/', '', $username));
 		
-		/*
-		if($fromwes == false)
-		{
-			// Encrypt and Clean password
-			$password = md5($password);
-			
-			$sel = 	"SELECT * FROM users u ".
-					"LEFT JOIN website_permissions wp ON u.user_id=wp.user_id ".
-					"WHERE 1=1 AND ".
-					"wp.website_id='".$_SETTINGS['website_id']."' AND ".
-					"(u.username = '$username' OR u.email = '$username') AND ". 
-					"u.password = '$password' AND ".
-					"u.active = '1' ";
-			$adminQuery = doQuery($sel);
-		}
-		// else do fromwes
-		else 
-		{
-			$sel = 	"SELECT * FROM users u ".
-					"LEFT JOIN website_permissions wp ON u.user_id=wp.user_id ".
-					"WHERE 1=1 AND ".
-					"wp.website_id='".$_SETTINGS['website_id']."' AND ".
-					"(u.username = '$username' OR u.email = '$username') AND ". 
-					"u.active = '1' ";
-			$adminQuery = doQuery($sel);
-		}*/
 		
 		$sel = 	"SELECT * FROM users u ".
 				"LEFT JOIN website_permissions wp ON u.user_id=wp.user_id ".
@@ -129,7 +103,6 @@ class Admin {
 		}
 	}		
 
-	
 	// Makes sure admin user has correct access level upon entering a section "Acts as A Double Check"
 	function CheckAccessLevel($header)
 	{
@@ -150,6 +123,15 @@ class Admin {
 			
 			
 		}
+	}
+
+	function getUsersWebsites(){
+		$webSelect = 	"SELECT * FROM websites w ".
+						"LEFT JOIN website_permissions wp ON w.website_id=wp.website_id ".
+						"WHERE 1=1 AND ".
+						"wp.user_id='".$this->user_id."'";
+		$webResult = doQuery($webSelect);
+		return $webResult;
 	}
 }
 ?>

@@ -216,7 +216,7 @@ if(isset($_POST['changewebsite']))
 							// MODULE MENU
 							foreach($modules as $module)
 							{
-								if($module != "dashboard")
+								if($module != "main_dashboard")
 								{
 									echo "<li><a class='h-ico ico-".$module."' href='?module=".$module."'><span>".ucwords(str_replace("_"," ",$module))."</span></a></li>";
 								}
@@ -237,6 +237,7 @@ if(isset($_POST['changewebsite']))
 					</div>
 				</div><!-- #h-wrap -->
 				
+				<?php /* ?>
 				<form action="?module=<?=urlRequest('module')?>" method="get">
 					<fieldset>
 						<label class="a-hidden" for="keywords">Search query:</label>
@@ -244,6 +245,7 @@ if(isset($_POST['changewebsite']))
 						<input class="hand fr" type="image" src="images/search-button.png" alt="Search" />
 					</fieldset>
 				</form>
+				*/ ?>
 				
 			</div>
       	</div>
@@ -281,7 +283,7 @@ if(isset($_POST['changewebsite']))
 				?>
 				
 				<div id="footer"><!-- footer, maybe you don't need it -->
-					<p>Wesley&trade; is a <a href="http://www.webksd.com">Karl Steltenpohl Development LLC</a> service.<Br>&copy; 2010-<?=date("Y")?></p>
+					<p>Wesley&trade; is a <a href="http://www.webksd.com">Karl Steltenpohl Development LLC</a> product.<Br>&copy; 2010 - <?=date("Y")?>. All rights reserved.</p>
 				</div>
 			</div>
 		</div>		

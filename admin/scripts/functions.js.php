@@ -125,7 +125,7 @@
             width: 150
         });
         
-        // MULTISELECT
+        //// MULTISELECT
         $(".multiselect").multiselect({
 			selectedText: "# of # selected"
         });

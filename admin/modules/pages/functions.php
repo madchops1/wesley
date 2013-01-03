@@ -34,7 +34,7 @@ function powerPagesTable()
 												<tr>
 													<td class=""><input type="checkbox" id="check-all" name="data-1-check-all" value="true"  /></td>
 													<td class="tc small">Name</td>
-													<!-- <td class="tc small">SEO Title</td> -->
+													<td class="tc small">SEO Title</td>
 													<td class="tc large">Parents</th>
 													<td class="tc medium">Template</th>
 													<td class="tc medium">Status</td>
@@ -137,14 +137,19 @@ function powerPagesTable()
 												// GET DIR ARRAY
 												
 												$dirs = $Pages->arrayTemplates();
-												foreach($dirs as $dir)
-												{
-													$dirArray 		= explode(".",$dir);
-													$optionName		= ucwords(str_replace("template_","",$dirArray[0]));
-													$optionValue 	        = $dir;
-													$themesSelect .= "      <option value='".$optionValue."' ".selected($optionValue,$row['template']).">".$optionName."</option>";
-												}
-													
+												if($dirs){
+													foreach($dirs as $dir)
+													{
+														$dirArray 		= explode(".",$dir);
+														$optionName		= ucwords(str_replace("template_","",$dirArray[0]));
+														$optionValue 	        = $dir;
+														$themesSelect .= "      <option value='".$optionValue."' ".selected($optionValue,$row['template']).">".$optionName."</option>";
+													}
+												} else {
+													$themesSelect .= "			<option>No Templates</option>";
+												}	
+												
+												
 												$themesSelect .= "		</select>";
 											
 												$siteSubDomain	= lookupDbValue('websites','subdomain',$_SETTINGS['website_id'],'website_id');
@@ -164,7 +169,7 @@ function powerPagesTable()
 												$content .= '	<tr>
 																	<td class=""><input type="checkbox" class="rowcheck" id="check-'.$i.'" name="check-'.$i.'" table="pages" xid="'.$row['page_id'].'" columnid="page_id" value="1" /></td>
 																	<td class="tc small"><input type="text" class="ajax-input" table="pages" column="name" columnid="page_id" xid="'.$row['page_id'].'" value="'.$row['name'].'" /></td>
-																	<!-- <td class="tc small"><input type="text" class="ajax-input" table="pages" column="seo_title" columnid="page_id" xid="'.$row['page_id'].'" value="'.$row['seo_title'].'" /></td> -->
+																	<td class="tc small"><input type="text" class="ajax-input" table="pages" column="seo_title" columnid="page_id" xid="'.$row['page_id'].'" value="'.$row['seo_title'].'" /></td>
 																	<td class="tc large">'.$parentsMultiSelect.'</td>
 																	<td class="tc medium">'.$themesSelect.'</td>
 																	<td class="tc medium">'.statusField('pages','status',$row['page_id'],'page_id',$row['status']).'</td>
