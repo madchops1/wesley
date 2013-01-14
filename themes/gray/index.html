@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title><$title /$></title>
+	<link rel="shortcut icon" href="<$themeRoot/$>images/favicon.ico" type="image/x-icon"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<link href="<$themeRoot/$>css/styles.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="<$themeRoot/$>css/trendy.css" rel="stylesheet" type="text/css" media="screen" />
+	<!--[if lte IE 6]>
+		<style type="text/css" title="style" media="screen">
+			@import "themes/default/css/style_IE.css";
+		</style>		
+	<![endif]-->
+
+	<$customCss /$>
+	
+	<script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script language="javascript" type="text/javascript" src="<$themeRoot/$>js/flow.1.2.min.js"></script>
+	<script language="javascript" type="text/javascript" src="<$themeRoot/$>js/jCarouselLite.js"></script>
+	<script language="javascript" type="text/javascript" src="<$themeRoot/$>js/custom.js"></script>
+	
+	<$customJavascript /$>
+		
+</head>
+	<body>
+		<div id="contentFrame">
+			
+			<div id='header'>
+				<$spot name='header' everypage='true' /$>
+			</div>
+			<div id="content">
+			    <$spot name='workspace' /$>  
+			</div>
+			<div id="footer">	
+				<$spot name='footer' everypage='true' /$>
+			</div>	
+		</div>
+	</body>
+</html>

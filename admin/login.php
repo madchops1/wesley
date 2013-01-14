@@ -16,7 +16,11 @@ if(is_file('../includes/config.php'))
 {
 	require_once('../includes/config.php');	
 } else {	
-	echo "<Br>NO CONFIG!";
+    $deadMessage = "  <br><br><strong>Configuration file not found.</strong>
+                      <br><br><i>You can use the example configuration file: /includes/config.php.example</i>
+                      <br>to create your actual configuration file. Just remove the .example suffix.
+                      ";	
+    echo $deadMessage;
 }
 
 
@@ -29,14 +33,18 @@ if(is_file('../includes/config.php'))
 // LOGIN
 if(isset($_POST['login']))
 {	
+  
+    /** From Wesley is deprecated. The brochure site is dead. **
 	// IF FROM WESLEY.WESCMS.COM THEN LOG IN AUTOMATICALLY
 	if(isset($_POST['fromwesley']) AND $_SESSION["session"]->admin->login($_POST['username'], "","1"))
 	{
 		header("Location: index.php");
 		exit();
 	}
+	*/
+  
 	// If username password validate forward to index.php with session id
-	elseif($_SESSION["session"]->admin->login($_POST['username'], $_POST['password']))
+	if($_SESSION["session"]->admin->login($_POST['username'], $_POST['password']))
 	{
 		header("Location: index.php");
 		exit();
@@ -46,6 +54,7 @@ if(isset($_POST['login']))
 		header("Location: ?messageType=4&message=Your credentials are not in our system.");
 		exit();
 	}
+	
 }
 
 // RETRIEVE PASSWORD
