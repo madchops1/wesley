@@ -142,6 +142,10 @@ if(isset($_POST['changewebsite']))
 	  $(document).ready(function() {
 		  currentVal = $("#website").val();
 		  console.log('currentVal: '+currentVal+'');
+		  
+		  if(isNaN(currentVal / 1) == false) {
+			    $("#website").show();
+		  }
 	  });
 	</script>	
 	</head>
@@ -155,7 +159,7 @@ if(isset($_POST['changewebsite']))
 					</a>
 				</h1>
 				<form id='changewebsite' class='changewebsite' action='' method='post'>
-					<select name='changewebsite' class='website' id='website' onchange='this.form.submit();'>
+					<select style='display:none;' name='changewebsite' class='website' id='website' onchange='this.form.submit();'>
 						<option value='main_dashboard'>Main Dashboard</option>
 						<?
 						$webSelect = 	"SELECT * FROM websites w ".
