@@ -51,7 +51,7 @@ if(isset($_POST['changewebsite']))
 	elseif($_POST['changewebsite'] == 'main_dashboard')
 	{	
 		$webiste_id = '';
-		header("Location: http://wescms.com/admin/index.php?session=".session_id()."");
+		header("Location: http://www.wescms.com/admin/index.php?session=".session_id()."");
 	}
 	// CHANGING WEBSITES
 	else

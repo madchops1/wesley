@@ -22,7 +22,7 @@ $_SETTINGS['dbUser'] 		= 'root';									// Database User
 $_SETTINGS['dbPass'] 		= 'karlkarl1';								// Database Password
 */
 
-// Production Settins
+// Production Settings
 $_SETTINGS['dbHost'] 		= 'localhost';								// Database Host
 $_SETTINGS['dbName']		= 'wesley';									// Database Name
 $_SETTINGS['dbUser'] 		= 'root';									// Database User
