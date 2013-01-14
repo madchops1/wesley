@@ -9,11 +9,11 @@ if(isset($_POST['payload'])){
    * the apache user should be able to pull from git!
    */
   function sendMessage($output){
-    $message = "WesCMS.com Deployment Report
-            Date:".date("m/d/Y h:i:s A")."
-            --------------------------------------------------
-            ".$output."";
-        $message = wordwrap($message, 100, "\r\n");
+    $message =   "WesCMS.com Deployment Report\r\n";
+    $message .=  "Date:".date("m/d/Y h:i:s A")."\r\n";
+    $message .=  "......................................\r\n";
+    $message .=  "".$output."";
+    $message = wordwrap($message, 100, "\r\n");
     @mail('karl@webksd.com', 'WesCMS.com Deployment Report '.date("m/d/Y h:i:s A").'', $message);
     @mail("6302175813@txt.att.net",$subject,$message,"From: deployment@wescms.com");
   }

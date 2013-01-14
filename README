@@ -1,0 +1,19 @@
+
+
+
+            Wesley
+            ..................................................................................
+            An enterprise content management system built in php & mysql
+            
+            Setup
+            ..................................................................................
+            The configuration filepath is /includes/config.php this is where you setup your 
+            database credentials            
+            
+            Local Development
+            ..................................................................................
+            To develop locally in something like MAMP your local host name must be wescms.com
+            or optionally the .htaccess must be modified for the local environment.
+            
+            
+            

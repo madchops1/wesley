@@ -137,17 +137,17 @@ if(isset($_POST['changewebsite']))
 	}
 	?>
 		
-    <!-- Wesley Admin Scripts -->
-	<script type="text/javascript">
-	  $(document).ready(function() {
-		  currentVal = $("#website").val();
-		  console.log('currentVal: '+currentVal+'');
-		  
-		  if(isNaN(currentVal / 1) == false) {
-			    $("#website").show();
-		  }
-	  });
-	</script>	
+        <!-- Wesley Admin Scripts -->
+    	<script type="text/javascript">
+    	  $(document).ready(function() {
+    		  currentVal = $("#website").val();
+    		  console.log('currentVal: '+currentVal+'');
+    		  if(isNaN(currentVal / 1) == false) {
+    			    $(".visitsite").show();
+    		  }
+    	  });
+    	</script>	
+	
 	</head>
 	<body>
 		<div id="header">
