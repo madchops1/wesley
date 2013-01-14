@@ -140,7 +140,7 @@ if(isset($_POST['changewebsite']))
     <!-- Wesley Admin Scripts -->
 	<script type="text/javascript">
 	  $(document).ready(function() {
-		  currentVal = $(".visitsite").val();
+		  currentVal = $("#website").val();
 		  console.log('currentVal: '+currentVal+'');
 	  });
 	</script>	
