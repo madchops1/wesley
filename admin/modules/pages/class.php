@@ -483,6 +483,65 @@ class Pages {
 		return $content;
 	}
 	
+	/*
+	function workspaceCallback($matches)
+	{
+	  global $_SESSION;
+	  global $_SETTINGS;
+	
+	  // DEFINE POSSIBLE SPOT ATTRIBUTES
+	  $name 		= "";
+	  $everypage 	= "";
+	
+	  $attributes = $matches[1];
+	  $attributesArray = $this->arrayAtrributes($attributes);
+	  foreach($attributesArray as $attribute)
+	  {
+	    $singleAttributeArray = explode("=",$attribute);
+	    if($singleAttributeArray[0]=='name'){ $name=$singleAttributeArray[1]; }
+	    if($singleAttributeArray[0]=='everypage'){ $everypage=$singleAttributeArray[1]; }
+	  }
+	
+	  // BUILD SPOT
+	  $content = "<div id='wesley-spot-".$name."' class='wesley-spot ".($everypage != '' ? "everypage" : "")."'>";
+	
+	  // IF NOT EDITING THEN INCLUDE WIDGETS IN SPOTS VIA PHP INCLUDE - IF EDITING THEN WIDGETS INSERTED THROUGH AJAX
+	  if(sessionRequest('cms') != 1)
+	  {
+	    // GET WIDGETS VIA INCLUDE
+	    $select = 	"SELECT * FROM things ".
+	        "WHERE 1=1 ".
+	        "AND parent_thing_id = '0' ".
+	        "AND spot = 'wesley-spot-".$name."' ".
+	        "AND page = '".($everypage != "" ? "everypage" : $this->getPage())."' ".
+	        "AND widget != '' ".
+	        "AND active = '1' ".
+	        "AND website_id = '".$_SETTINGS['website_id']."' ".
+	        "ORDER BY thing_id DESC";
+	    //echo $select;
+	    	
+	    $widgetresult = doQuery($select);
+	    $i = 0;
+	    while($row = mysql_fetch_array($widgetresult))
+	    {
+	      //$content .= $i;
+	
+	      //flush();
+	      //ob_start();
+	      $widgetId = $row['thing_id'];
+	      //include('file.php');
+	      include $_SETTINGS['DOC_ROOT'].$row['widgetpath'].'index.php';
+	      //$contents = ob_get_clean();
+	      //$content .= $contents;
+	      $i++;
+	    }
+	  }
+	  $content .= "</div>";
+	
+	  return $content;
+	}
+	*/
+	
 	// CONSTRUCT PAGE
 	function constructPage()
 	{
@@ -613,28 +672,45 @@ class Pages {
 		}
         
 		
-		
+		//
 		// WES TAG REPLACE		
-		// <$template /$>
-		$content = preg_replace_callback('/<\$template(.*)\/\$>/',array(get_class($this), 'templateCallback'),$content); 					// REPLACE TEMPLATE FIRST
+		//
+		
+		/**
+		 *  <$template /$>
+		 *  this is no longer used since I have moved beyond the idea
+		 *  of using templates. It seems so physical so in the box...
+		 */
+		//$content = preg_replace_callback('/<\$template(.*)\/\$>/',array(get_class($this), 'templateCallback'),$content); 					// REPLACE TEMPLATE FIRST
+		
 		// <$themeRoot /$>
 		$content = preg_replace_callback('/<\$themeRoot(.*)\/\$>/',array(get_class($this), 'themeRootCallback'),$content);					// REPLACE THEME ROOT
+		
 		// <$mainNav /$>
 		$content = preg_replace_callback('/<\$mainNav(.*)\/\$>/',array(get_class($this), 'mainNavCallback'),$content);						// REPLACE MAIN NAV
+		
 		// <$title /$>
 		//$content = preg_replace_callback('/<\$title(.*)\/\$>/',array(get_class($this), 'titleCallback'),$content);						// REPLACE TITLE
+		
 		// <$customCSS /$>
 		$content = preg_replace_callback('/<\$customCss(.*)\/\$>/',array(get_class($this), 'customCssCallback'),$content);					// REPLACE CUSTOM CSS
+		
 		// <$customJavascript /$>
 		$content = preg_replace_callback('/<\$customJavascript(.*)\/\$>/',array(get_class($this), 'customJavascriptCallback'),$content);	// REPLACE CUSTOM JS
+		
 		// <$spot /$>
 		$content = preg_replace_callback('/<\$spot(.*)\/\$>/',array(get_class($this), 'spotCallback'),$content);							// REPLACE SPOT
 		
-		// ADD THE CMS EDITOR AND REQUIRED CSS, JS
+		/**
+		 * <$workspace /$>
+		 */
+		//$content = preg_replace_callback('/<\$workspace(.*)\/\$>/',array(get_class($this), 'workspaceCallback'),$content);					// REPLACE WORKSPACE
+				
+		/**
+		 * ADD THE CMS EDITOR AND REQUIRED CSS, JS
+		 */
 		$content = str_replace('</head>',$cmsEditorScript.' </head>',$content);		// SCRIPTS GO AT END OF <HEADER>
 		$content = str_replace('</body>',$cmsEditorNav.' </body>',$content);		// EDITOR GOES AT END OF <BODY>
-		
-		
 		
 		// SPIT IT OUT
 		echo $content;

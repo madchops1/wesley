@@ -13,8 +13,12 @@
 if(is_file('../includes/config.php'))
 {
 	require_once('../includes/config.php');	
-} else {	
-	die("No config.php file found...");
+} else {
+    $deadMessage = "  <br><br><strong>Configuration file not found.</strong>
+                      <br><br><i>You can use the example configuration file: /includes/config.php.example</i>
+                      <br>to create your actual configuration file. Just remove the .example suffix.
+                      ";	
+	die($deadMessage);
 }
 
 // LOGIN CHECK

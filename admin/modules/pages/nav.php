@@ -14,6 +14,10 @@
 *
 *************************************************************************************************************************************/
 
+
+// I don't think this file is used.
+
+
 ?>
 <li><a class="Search <? if($_REQUEST['ADDNEW'] == "" AND $_REQUEST['LAYOUT'] == "" AND $_REQUEST['xid'] == ""){ ?> active <? } ?>" href="?VIEW=<?=$_GET['VIEW']?>">Pages</a></li>
 <li><a class="Add <? if($_REQUEST['ADDNEW'] == '1'){ ?> active <? } ?>" href="?VIEW=<?=$_GET['VIEW']?>&ADDNEW=1">New Page</a></li>

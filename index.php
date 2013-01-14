@@ -14,19 +14,29 @@
 (include'includes/config.php') or die("<Br>No Config File!");
 
 
-// Take them to the admin or login...
+/**
+ * When someone hits wescms.com,
+ * Take them to the admin/login...
+ */ 
 if($_SETTINGS['website_id'] == "")
 {
-	//header('Location: http://wesley.wescms.com');
 	header('Location: /admin/index.php');
 	exit();
 } 
-// Build the requested page
+/**
+ * Else Build page
+ */
 else {
-	$Pages = new Pages();	
-	$Pages->constructPage();
+  $Pages = new Pages();	
+  $Pages->constructPage();
 }
-//echo "<br>SESSION:<br>";     
-//debugArray($_SESSION);
+
+/**
+ * Debugging
+ */
+if($_SETTINGS['debug'] == TRUE){
+  echo "<br>SESSION:<br>";     
+  debugArray($_SESSION);
+}
 ?>
 

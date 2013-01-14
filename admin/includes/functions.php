@@ -873,6 +873,15 @@ function arrayDirectories($dir)
 	}
 	return $dirContents;	
 }
+
+function checkWesleySiteStatus($websiteId){
+  $url = lookupDbValue('websites','url','website_id',$websiteId);
+  if($url == ''){
+    return true;
+  }
+  return false;
+}
+
 // SYSTEM ERROR
 function wesleySystemError($message)
 {

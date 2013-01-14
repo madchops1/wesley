@@ -1,4 +1,5 @@
 // GET CURRENT PAGE WIDGETS FOR EACH SPOT
+// Now there is only one spot
 $('.wesley-spot').each(function()
 {
 	var that = this;
@@ -14,17 +15,8 @@ $('.wesley-spot').each(function()
 						spot:$(this).attr('id')
 					},
 			success: function(data){
-							$(that).prepend(data);
-							
-							
-							
-							
-							
-							
-							
-							
-						}
-						
+				$(that).prepend(data);
+			}
 		}
 	);
 });

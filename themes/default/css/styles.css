@@ -58,8 +58,7 @@ h2 { font: bold 16px "Lucida Grande", Lucida, Verdana, sans-serif; color: #36363
 /********************/
 
 div#contentFrame { width: 980px; margin-right: auto; margin-left: auto; }
-
-	div#content { display: inline-block; width: 980px; float: left; margin: 10px 0 0; }
+div#content { display: inline-block; width: 980px; float: left; margin: 0 0px 0 0; height:400px; }
 	
 /******************/
 /*   Navigation   */
@@ -67,11 +66,11 @@ div#contentFrame { width: 980px; margin-right: auto; margin-left: auto; }
 
 div#nav_wrapper { width: 940px; height: 40px; background: url(../images/nav.png) no-repeat; display: inline-block; float: left; padding: 0 20px; margin-bottom:10px; }
 
-	#nav ul li { float: left; display: inline-block; height: 40px; font: 13px/40px "Lucida Grande", Lucida, Verdana, sans-serif; margin: 0 40px 0 0; }
+#nav ul li { float: left; display: inline-block; height: 40px; font: 13px/40px "Lucida Grande", Lucida, Verdana, sans-serif; margin: 0 40px 0 0; }
+
+	a.nav { text-decoration: none; color: #898989; }
 	
-		a.nav { text-decoration: none; color: #898989; }
-		
-		a.nav:hover { color: #363636; }
+	a.nav:hover { color: #363636; }
 
 /************/
 /*   Cols   */

@@ -53,8 +53,6 @@ $(document).ready(function() {
 		$('#wesley-cmsnav-contenteditarea').css("width",contenteditareaWidth+"px");
         $('#wesley-cmsnav-designeditarea').css("width",contenteditareaWidth+"px");
         
-        
-		
 	}
 	
 	resizeEditor();							// INITIALLY RESIZE THE EDITOR		
