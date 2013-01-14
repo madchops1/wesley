@@ -3,7 +3,7 @@
  *
  *	Wesley (TM)
  *	A Karl Steltenpohl Development LLC Product
- *	Copyright 2012, All Rights Reserved
+ *	Copyright 2013 All Rights Reserved
  *
  *************************************************************************************************************************************/
 

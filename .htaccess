@@ -1,6 +1,8 @@
 ########################################################################################################################################
 #
-# Wesley
+#   Wesley (TM)
+#   A Karl Steltenpohl Development LLC Product
+#   Copyright 2013 All Rights Reserved
 #
 ########################################################################################################################################
 
@@ -66,7 +68,7 @@ RewriteCond %{REQUEST_URI} !^/uploads [NC]
 RewriteCond %{HTTP_HOST} ^([^/\.]+).wescms.com(.*) [NC]
 RewriteRule ^(.*)$ index.php?website=%1&request=%{THE_REQUEST} [NC,L]
 
-# WWW (turn off locally)
-RewriteCond %{HTTP_HOST} !^www.wescms.com$ [NC]
-RewriteCond %{HTTP_HOST} !^dev\. [NC]
-RewriteRule ^(.*)$ http://www.wescms.com/$1 [R=301]
+# WWW
+#RewriteCond %{HTTP_HOST} !^www.wescms.com$ [NC]
+#RewriteCond %{HTTP_HOST} !^dev\. [NC]
+#RewriteRule ^(.*)$ http://www.wescms.com/$1 [R=301]
