@@ -137,6 +137,13 @@ if(isset($_POST['changewebsite']))
 	}
 	?>
 		
+    <!-- Wesley Admin Scripts -->
+	<script type="text/javascript">
+	  $(document).ready(function() {
+		  currentVal = $(".visitsite").val();
+		  console.log('currentVal: '+currentVal+'');
+	  });
+	</script>	
 	</head>
 	<body>
 		<div id="header">
