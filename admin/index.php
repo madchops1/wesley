@@ -159,7 +159,7 @@ if(isset($_POST['changewebsite']))
 					</a>
 				</h1>
 				<form id='changewebsite' class='changewebsite' action='' method='post'>
-					<select style='display:none;' name='changewebsite' class='website' id='website' onchange='this.form.submit();'>
+					<select name='changewebsite' class='website' id='website' onchange='this.form.submit();'>
 						<option value='main_dashboard'>Main Dashboard</option>
 						<?
 						$webSelect = 	"SELECT * FROM websites w ".
@@ -196,9 +196,9 @@ if(isset($_POST['changewebsite']))
 				//echo "WEBSITE DOMAIN: ".$websiteDomain;
 				//echo "WEBSITE SUBDOMAIN: ".$websiteSubdomain;
 				if($websiteDomain != ""){
-					echo '<a class="button visitsite" href="http://'.$websiteDomain.'/'.$homepageName.'/session/'.session_id().'/cms/1" target="_blank">Edit Website</a>';
+					echo '<a style="display:none;" class="button visitsite" href="http://'.$websiteDomain.'/'.$homepageName.'/session/'.session_id().'/cms/1" target="_blank">Edit Website</a>';
 				} else {
-					echo '<a class="button visitsite" href="http://'.$websiteSubdomain.'.wescms.com/'.$homepageName.'/session/'.session_id().'/cms/1" target="_blank">Edit Website</a>';
+					echo '<a style="display:none;" class="button visitsite" href="http://'.$websiteSubdomain.'.wescms.com/'.$homepageName.'/session/'.session_id().'/cms/1" target="_blank">Edit Website</a>';
 				}
 				?>
 				
