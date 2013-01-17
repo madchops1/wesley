@@ -143,8 +143,16 @@ if(isset($_POST['changewebsite']))
     		  currentVal = $("#website").val();
     		  console.log('currentVal: '+currentVal+'');
     		  if(isNaN(currentVal / 1) == false) {
-    			    $(".visitsite").show();
+    			  $(".visitsite").show();
     		  }
+
+    		  $("#website").change(function(){
+                if($(this).val() == 'new'){
+                	e.preventDefault();
+                } else {
+                	this.form.submit();
+                }
+    		  });
     	  });
     	</script>	
 	
@@ -159,7 +167,7 @@ if(isset($_POST['changewebsite']))
 					</a>
 				</h1>
 				<form id='changewebsite' class='changewebsite' action='' method='post'>
-					<select name='changewebsite' class='website' id='website' onchange='this.form.submit();'>
+					<select name='changewebsite' class='website' id='website' onchange=''>
 						<option value='main_dashboard'>Main Dashboard</option>
 						<?
 						$webSelect = 	"SELECT * FROM websites w ".
@@ -181,6 +189,11 @@ if(isset($_POST['changewebsite']))
 				</form>
 				
 				<?
+				    /**
+                     * 
+                     * 
+                     * 
+				     */
 					$websiteName 			= lookupDbValue('websites','name',settingRequest('website_id'),'website_id'); 
 					$websiteSubdomain		= lookupDbValue('websites','subdomain',settingRequest('website_id'),'website_id');
 					$websiteDomain			= lookupDbValue('websites','domain',settingRequest('website_id'),'website_id');
@@ -201,7 +214,6 @@ if(isset($_POST['changewebsite']))
 					echo '<a style="display:none;" class="button visitsite" href="http://'.$websiteSubdomain.'.wescms.com/'.$homepageName.'/session/'.session_id().'/cms/1" target="_blank">Edit Website</a>';
 				}
 				?>
-				
 				
 				<div id="userbox">
 					<div class="inner">
@@ -269,10 +281,14 @@ if(isset($_POST['changewebsite']))
 			<div class="inner-container">
 				
 				<?
+				  
+				  echo $_SETTINGS['website_id'];
+				
 					// Get The Main My Website's Panel
 					if(urlRequest('module') == ''){
 						include 'modules/main_dashboard/panel.php';
 					} 
+					
 					// Get A Specific Website's Dashboard Panel
 					elseif(urlRequest('module') == 'dashboard')
 					{
