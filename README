@@ -5,10 +5,12 @@
             ..................................................................................
             An enterprise content management system built in php & mysql
             
+            
             Setup
             ..................................................................................
             The configuration filepath is /includes/config.php this is where you setup your 
             database credentials            
+            
             
             Local Development
             ..................................................................................
@@ -16,4 +18,25 @@
             or optionally the .htaccess must be modified for the local environment.
             
             
+            Module Development
+            ..................................................................................
+            n/a
+            
+            Module Development Rules
+            ..................................................................................
+            
+                1) No module can be named any of the following:
+                
+                    content
+                    documents
+                    forms
+                    main_dashboard
+                    overview
+                    pages
+                    settings
+                    social
+
+                   
+            
+           
             

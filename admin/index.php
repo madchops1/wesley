@@ -281,18 +281,15 @@ if(isset($_POST['changewebsite']))
 			<div class="inner-container">
 				
 				<?
-				  
-				  echo $_SETTINGS['website_id'];
-				
+				    //echo $_SETTINGS['website_id'];
 					// Get The Main My Website's Panel
-					if(urlRequest('module') == ''){
+					if(urlRequest('module') == '' && $_SETTINGS['website_id']){
 						include 'modules/main_dashboard/panel.php';
 					} 
-					
 					// Get A Specific Website's Dashboard Panel
-					elseif(urlRequest('module') == 'dashboard')
+					elseif(urlRequest('module') == '')
 					{
-						include 'modules/dashboard/panel.php';
+						include 'modules/overview/panel.php';
 					}
 					// GET THE PANEL FOR THE REQUESTED MODULE
 					else 
@@ -306,8 +303,8 @@ if(isset($_POST['changewebsite']))
 							wesleySystemError("Module doesn't exist.");
 						}
 					}
+					
 				?>
-				
 				
 				<?
 				ob_flush();
