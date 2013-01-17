@@ -281,19 +281,21 @@ if(isset($_POST['changewebsite']))
 			<div class="inner-container">
 				
 				<?
-				    //echo $_SETTINGS['website_id'];
+				    echo "<br>WEBSITE ID: ".$_SETTINGS['website_id']."<br>";
 					// Get The Main My Website's Panel
-					if(urlRequest('module') == '' && $_SETTINGS['website_id']){
+					if(urlRequest('module') == '' && $_SETTINGS['website_id'] == '')
+                    {
 						include 'modules/main_dashboard/panel.php';
 					} 
 					// Get A Specific Website's Dashboard Panel
-					elseif(urlRequest('module') == '')
+					elseif(urlRequest('module') == '' && $_SETTINGS['website_id'] != '')
 					{
 						include 'modules/overview/panel.php';
 					}
 					// GET THE PANEL FOR THE REQUESTED MODULE
 					else 
 					{
+					    // Get All Qualified Open Source Modules
 						if(is_file('modules/'.$_REQUEST['module'].'/panel.php'))
 						{
 							include 'modules/'.$_REQUEST['module'].'/panel.php';
