@@ -14,20 +14,18 @@ ini_set('display_errors', 1);
 //error_reporting(E_ERROR);
 error_reporting(E_ALL);
 
-// Local Settings
-/*
+/* Local Settings */
 $_SETTINGS['dbHost'] 		= 'localhost';								// Database Host
 $_SETTINGS['dbName']		= 'wesley';									// Database Name
 $_SETTINGS['dbUser'] 		= 'root';									// Database User
 $_SETTINGS['dbPass'] 		= 'karlkarl1';								// Database Password
-*/
 
-// Production Settings
+/* Production Settings 
 $_SETTINGS['dbHost'] 		= 'localhost';								// Database Host
 $_SETTINGS['dbName']		= 'wesley';									// Database Name
 $_SETTINGS['dbUser'] 		= 'root';									// Database User
 $_SETTINGS['dbPass'] 		= 'Karlkarl1';								// Database Password
-
+*/
 
 $_SETTINGS['website_path']	= "/";										// Website Relative Path "/" is the root...
 $_SETTINGS['host_name']		= "wescms.com"; 							// 
@@ -130,8 +128,7 @@ session_start();						// BEGIN SESSIONS
 setInput(); 							// HANDLE MOD REWRITE
 setWebsiteId(urlRequest('website'));	// SET WEBSITE ID
 
-
-
+// clear sessions hook
 if(urlRequest('clearsessions'))
 {
 	session_destroy();					// DESTROY ALL SESSIONS
@@ -139,8 +136,6 @@ if(urlRequest('clearsessions'))
 
 /**
  * Debugging...
- * 
- * 
  */
 //echo "<strong>DEBUG:</strong><br>THE WEBSITE ID IS: ".$_SETTINGS['website_id']."";
 //echo "<br>THE SESSION ID IS: ".session_id()."<Br>";
@@ -179,6 +174,7 @@ if(!isset($_SESSION["session"]))
 	$_SESSION["session"] = new Session();
 }
 
+$_SESSION['layerIndex'] = 10000;
 
 //$_SESSION['website'] = $_SETTINGS['website'];
 

@@ -1,5 +1,10 @@
-$(document).ready(function() {
 
+currentForgroundColor = 'FFFFFF';
+lastHeight = 0;
+lastWidth = 0;
+
+$(document).ready(function() {
+	$("#wesley-toolbox-panel").hide();
 	// COOKIE FOR THE EDITOR
 	//$.cookie('minimized', '0'); 
 	
@@ -53,11 +58,131 @@ $(document).ready(function() {
 		$('#wesley-cmsnav-contenteditarea').css("width",contenteditareaWidth+"px");
         $('#wesley-cmsnav-designeditarea').css("width",contenteditareaWidth+"px");
         
+        
+        
+        
 	}
 	
-	resizeEditor();							// INITIALLY RESIZE THE EDITOR		
-	$(window).resize(resizeEditor);			// RESIZE THE EDITOR ON WINDOW RESIZE
+	function resizeWorkspace(){
+		// SETUP SPOTS | OFFSET WESLEY SPOTS BORDER, MARGIN, PADDING
+		// HEIGHT
+		$('#wesley-toolbox').css('right','50px');
+		$('#wesley-toolbox').css('top','50px');
+		
+		$('.wesley-spot').height(function(){
+			return (($(this).parent().parent().height()) - 42);
+		});
+		
+		var windowHeight = $(window).height();   // returns height of browser viewport
+		var windowWidth = $(window).width();
+		
+		//re-put widgets
+		if(windowWidth < 960 && windowWidth > 720){
+			//$("")
+		}
+		
+		
+		//console.log(windowWidth+" x "+windowHeight);
+		
+		$('#grid').height(function(){
+			return (($(this).parent().height()) - 0);
+		});
+	}
 	
+	/**
+	 * Setup the rulers
+	 */
+	function resizeRulers(){
+		var windowHeight = $(window).height();   // returns height of browser viewport
+		var windowWidth = $(window).width();
+		
+		
+		if(windowWidth != lastWidth){
+			// x ruler
+			xrulerOffset = $("#wesley-spot-workspace").offset();
+			$("#x-ruler").css('width',windowWidth+'px');
+			$("#x-ruler").html("<div id='wesley-ruler-website-width'></div>");
+			$("#wesley-ruler-website-width").css('width',($('#wesley-spot-workspace').width() - 2)+'px');
+			$("#wesley-ruler-website-width").css('left', xrulerOffset.left+'px');
+			
+			for (var i=0; i<($('#wesley-spot-workspace').width()-5)/5; i++){
+				//document.write(cars[i] + "<br>");
+				$("#wesley-ruler-website-width").prepend('<div class="ruler-px"></div>');
+			}
+		}
+		lastWidth = windowWidth;
+		
+		var body = document.body,
+	    html = document.documentElement;
+
+		var height = Math.max( body.scrollHeight, body.offsetHeight, 
+	                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+		
+		if(height != lastHeight){
+			// y ruler
+			$("#y-ruler").css('height',height+'px');
+			
+			for (var i=0; i<(height-5)/5; i++){
+				//document.write(cars[i] + "<br>");
+				$("#y-ruler").prepend('<div class="yruler-px"></div>');
+			}
+		}
+		lastHeight = windowHeight;
+	}
+	
+
+	
+	
+	
+	
+	//resizeEditor();							// INITIALLY RESIZE THE EDITOR		
+	//$(window).resize(resizeEditor);			// RESIZE THE EDITOR ON WINDOW RESIZE
+	
+	resizeRulers();
+	resizeWorkspace();
+	$(window).resize(resizeWorkspace);
+	$(window).resize(resizeRulers);
+	
+	
+
+	$("#x-ruler-guide").draggable({
+        axis: "y",
+        cursor: "move",
+        //cursorAt: { top: -12, left: -20 },
+        helper: function( event ) {
+        	return $( "<div class='wesley-x-guide'></div>" );
+        }
+        /*containment: "#wesley-spot-workspace"*/ /*,
+        drag: function() {
+            var position = $(this).position();
+            var xPos = $(this).css('left');
+            $(this).find($('.pos')).text('X: ' + xPos);
+        },
+        start: function() {
+            $(this).find($('.pos')).css('display', 'block');
+        },
+        stop: function() {
+            $(this).find($('.pos')).css('display', 'none');
+
+            if ($(this).hasClass("draggable-x-newest")) {
+                $(this).removeClass("draggable-x-newest");
+                $("#canvas .x-guide").clone().removeClass("x-guide").addClass("draggable-x-newest").appendTo("#canvas").each(function() {
+                    makeGuideX(this);
+                });
+            }
+        }*/
+    });
+
+	$("#y-ruler-guide").each(function() {
+	//    makeGuideY(this);
+		
+		
+	});
+	
+	
+	//$(window).scroll(resizeWorkspace);
+	
+	/*
 	// MINIMIZE EDITOR BUTTONS
 	$('.wesley-cmsnav-minimize').click(function(e){
 		e.preventDefault();
@@ -77,35 +202,90 @@ $(document).ready(function() {
         $('.wesley-cmsnav-minimize').css('background-image','url(/admin/modules/pages/images/icons/gray_18/directional_down.png)');
 		resizeEditor();
 	});
+	*/
     
+	
 	// HOVER OVER EDITOR - CANCEL SPOT ACTIVE CLASS
-	$('.wesley-cmsnav').hover(
-		function(){
+	//$('.wesley-cmsnav').hover(
+	$('.wesley-toolbox').hover(
+			function(){
 			$('.wesley-spot').removeClass('wesley-spot-active');
 		},
 		function(){
 			
 		}
 	);
-	// SETUP SPOTS | OFFSET WESLEY SPOTS BORDER, MARGIN, PADDING
-	// HEIGHT
-	$('.wesley-spot').height(function(){
-		return (($(this).parent().height()) - 0);
-	});
+	
+	
+	
+	
+	
 	
 	// WIDTH
-	$('.wesley-spot').width(function(){
-		return (($(this).parent().width()) - 0);
-	});
+	//$('.wesley-spot').width(function(){
+	//	return (($(this).parent().width()) - 0);
+	//});
 	
 	// PARENT OVERFLOW
-	$('.wesley-spot').parent().css('overflow','visible');
-	// DRAGGABLE WIDGET IN CMS EDITOR
-	$( "#wesley-cmsnav-widgetmenu a" ).live('click',function(){
+	//$('.wesley-spot').parent().css('overflow','visible');
+	
+	/* */
+	// toolbox color picker
+	$('#colorSelector').ColorPicker({
+		color: '#ffffff',
+		onShow: function (colpkr) {
+			$(colpkr).fadeIn(500);
+			return false;
+		},
+		onHide: function (colpkr) {
+			$(colpkr).fadeOut(500);
+			return false;
+		},
+		onChange: function (hsb, hex, rgb) {
+			$('#colorSelector div').css('backgroundColor', '#' + hex);
+			currentForgroundColor = hex;
+		}
+	});
+	
+	// make the toolbox draggable
+	$( "#wesley-toolbox" ).draggable({
+		handle: "#wesley-toolbox-widgetstitle"
+	}); //... nope, not yet
+	
+	// make the toolbox panel draggable
+	$( "#wesley-toolbox-panel" ).draggable({
+		handle: "#wesley-toolbox-panel-title"
+	}); //... nope, not yet
+	
+	
+	
+	
+	
+	// prevent clicking on a toolbox item
+	$( "#wesley-toolbox-toolmenu-tools a" ).live('click',function(e){
 		e.preventDefault();
 	});
 	
-	$( "#wesley-cmsnav-widgetmenu a" ).draggable({
+	$( "#wesley-filemenu-handle-open" ).click(function(){
+		$( "#wesley-filemenu" ).css('left','0px');
+		$( "#wesley-filemenu-handle-open" ).hide();
+		$( "#wesley-filemenu-handle-close" ).show();
+	});
+	
+	$( "#wesley-filemenu-handle-close" ).click(function(){
+		$( "#wesley-filemenu" ).css('left','-99%');
+		$( "#wesley-filemenu-handle-close" ).hide();
+		$( "#wesley-filemenu-handle-open" ).show();
+	});
+	
+	// DRAGGABLE WIDGET IN CMS EDITOR
+	//$( "#wesley-cmsnav-widgetmenu a" ).live('click',function(){
+	//	e.preventDefault();
+	//});
+	
+	
+	//$( "#wesley-cmsnav-widgetmenu a" ).draggable({
+	$( "#wesley-toolbox-toolmenu-tools li[type='draggable']" ).draggable({
 		revert: "invalid",
 		containment: $( "body" ).length ? "body" : "document",
 		helper: "clone",
@@ -144,9 +324,12 @@ $(document).ready(function() {
 		});
 	}
 	
-	// DROPPABLE SPOT
+	/**
+     * Droppable workspace / spot
+     */
 	$( ".wesley-spot" ).droppable({
-		accept: "#wesley-cmsnav-widgetmenu a",
+		/*accept: "#wesley-cmsnav-widgetmenu a",*/
+		accept: "#wesley-toolbox-toolmenu-tools li[type='draggable']",
 		greedy: true,
 		over: function( event, ui ){
 			//formatWidgetsOver(this);
@@ -159,15 +342,19 @@ $(document).ready(function() {
 			that = this;
 			var draggable = ui.draggable;
 			var thisWidgetSpotPage = '';
-			// IF THIS SPOT HAS EVERYPAGE CLASS THEN WIDGET RESIDES IN THIS SPOT ON EVERY PAGE
-			if($(that).hasClass('everypage')){
-				thisWidgetSpotPage = 'everypage';
-			}
-			// ELSE WIDGET RESIDES IN THIS SPOT ON JUST THIS PAGE
-			else {
-				thisWidgetSpotPage = draggable.attr('page');
-			}
 			
+			
+			// IF THIS SPOT HAS EVERYPAGE CLASS THEN WIDGET RESIDES IN THIS SPOT ON EVERY PAGE
+			//if($(that).hasClass('everypage')){
+			//	thisWidgetSpotPage = 'everypage';
+			//}
+			// ELSE WIDGET RESIDES IN THIS SPOT ON JUST THIS PAGE
+			//else {
+				thisWidgetSpotPage = draggable.attr('page');
+			//}
+			/**
+			 * Save the drop 
+			 */
 			$.ajax(
 				{
 					type:	'POST',
@@ -178,33 +365,47 @@ $(document).ready(function() {
 								widget:draggable.attr('widget'),
 								widgetpath:draggable.attr('widgetpath'),
 								page:thisWidgetSpotPage,
-								spot:$(that).attr('id')
+								spot:$(that).attr('id'),
+								width: 0,
+								height: 0,
+								top: 0,
+								left: 0,
+								color: currentForgroundColor
 							},
 					success: function(data){
-						$(that).removeClass("wesley-spot-active");	// REMOVE HOVER CLASS FROM SPOT
-						$(that).prepend(data);						// ADD WIDGET TO SPOT
-						$(that).height($(that).parent().height());	// RESIZE SPOT TO FIT PARENT HEIGHT
+						$(that).removeClass("wesley-spot-active");	// Remove hover class from active
+						$(that).prepend(data);						// Add the widget via drag/drop
+						$(that).height($(that).parent().height());	// resize workspace to parent height
 						
+						// Make the widget drop draggable
 						$(that).children('.wesley-cmsnav-widget').draggable(
 							{
-								containment: $(that),
+								/*containment: $(that),*/
 								stop:function(event,ui)
 								{
-									var top = $(this).css('top');
-									var left = $(this).css('left');
-									$(this).attr('top',top);
-									$(this).attr('left',left);
+									//var top = $(this).css('top');
+									//var left = $(this).css('left');
+									//$(this).attr('top',top);
+									//$(this).attr('left',left);
+									//$(this).attr('style','position:absolute;');
+									//$(this).css('position','absolute');
 									var widget = this;		
-									updateWidgetSizeAndPosition(widget);
-								}
+									//updateWidgetSizeAndPosition(widget);
+								},
+								handle: ".wesley-cmsnav-widget-move",
+								snap: "#grid .overlay div",
+								snapMode: "both",
+								snapTolerance: 5
 							}
 						);
 						
+						/*
 						$(that).children('.wesley-cmsnav-widget').resizable(
 							{
 								containment: 'parent',
 								//containment: $(that),
 								handles: 'e,se,s',
+								grid: [ 2, 10 ],
 								alsoResize: '.also-resizable-' + $(this).attr('id') + '',
 								create:function(event,ui){
 									$(this).css('position','relative');							// SET NEW WIDGET ELEMENT TO RELATIVE POSITION
@@ -236,8 +437,6 @@ $(document).ready(function() {
 									if ($(event.originalTarget).hasClass("ui-resizable-se")) {
 										// Keep aspect ratio function
 									}
-
-
 									
 									// LOOP THROUGH THE CHILDREN WIDGETS
 									$(that).children('.wesley-cmsnav-widget').each(function(){										
@@ -289,9 +488,10 @@ $(document).ready(function() {
 								}
 							}						    
 						);
-                        
-                        $('.wesley-cmsnav-widget').draggable('disable');        // DISABLE DRAGGABLES
-                        $('.wesley-cmsnav-widget').resizable('disable');        // DISABLE RESIZABLES
+                        */
+						
+                        //$('.wesley-cmsnav-widget').draggable('disable');        // DISABLE DRAGGABLES
+                        //$('.wesley-cmsnav-widget').resizable('disable');        // DISABLE RESIZABLES
                         
 					}   
 				}       
@@ -317,8 +517,8 @@ $(document).ready(function() {
 		// OPEN WIDGET PANEL
         //$.cookie('wesley-cmsnav-tab', 'content',{ expires: 10 });
         // IF MAIN CMSNAV TAB IS "CONTENT"
-        if($.cookie('wesley-cmsnav-tab') == 'content')
-        {
+        //if($.cookie('wesley-cmsnav-tab') == 'content')
+        //{
             $('.wesley-cmsnav-widget').removeClass('active-widget');
             $(this).addClass('active-widget');
             
@@ -331,16 +531,20 @@ $(document).ready(function() {
                     url:	panelpath,
                     data:	{ widget_id: widgetId },
                     success: function(data){
-                        $('#wesley-cmsnav-contenteditarea').html(data);
+                        //$('#wesley-cmsnav-contenteditarea').html(data);
+                    	//$("body").prepend("<div id='wesley-toolbox-panel-"+widgetId+"' class='toolbox-panel'></div>")
+                        //$("#wesley-toolbox-panel-content").html(data);
+                        //$("#wesley-toolbox-panel").show();
                     }
                 });
                 load = 1;
             }
-        }
+        //}
         
         // SET THE COOKIE AFTER THE CHECK
         $.cookie('wesley-widget-panel', widgetId , { expires: 10 });
 	});
+	
 	// WIDGET REMOVE 
 	$('a.wesley-cmsnav-widget-close').live('click',function(e){
 		e.preventDefault();
@@ -367,16 +571,16 @@ $(document).ready(function() {
 						var addleft = 0;
 						// LOOP THROUGH THE CHILDREN WIDGETS
 						spot.children('.wesley-cmsnav-widget').each(function(){										
-							if(flag == 1){										
-								var adjustLeft = $(this).css('left').replace('px','');		// GET ALL WIDGETS AFTER CURRENT WIDGET LEFT VALUE
-								newWidth = parseInt(adjustLeft) + addleft;					// ADD LEFT TO THE PREVIOUS WIDGET SIZE
-								$(this).css('left',newWidth+'px');							// SET NEW LEFT
-								$(this).attr('left',newWidth+'px');							// SET NEW LEFT ATTR
-							}									
+							//if(flag == 1){										
+							//	var adjustLeft = $(this).css('left').replace('px','');		// GET ALL WIDGETS AFTER CURRENT WIDGET LEFT VALUE
+							//	newWidth = parseInt(adjustLeft) + addleft;					// ADD LEFT TO THE PREVIOUS WIDGET SIZE
+							//	$(this).css('left',newWidth+'px');							// SET NEW LEFT
+							//	$(this).attr('left',newWidth+'px');							// SET NEW LEFT ATTR
+							//}									
 							// IF IT IS THIS WIDGET THEN FLAG
 							if($(this).attr('id') == id){
 								flag = 1;
-								addleft = $(this).width();
+							//	addleft = $(this).width();
 								//$(this).fadeOut(500,function(){$(this).remove();});
 								$(this).remove();
 								//alert(addleft);
@@ -394,6 +598,7 @@ $(document).ready(function() {
 	// WIDGET MOVE 
 	$('a.wesley-cmsnav-widget-move').live('click',function(e){
 		e.preventDefault();
+		/*
 		var widget = $(this).parents('.wesley-cmsnav-widget');
 		var that = this;
 		var spot = widget.parents('.wesley-spot');
@@ -412,11 +617,13 @@ $(document).ready(function() {
             //$('#' + id + '.wesley-cmsnav-widget').resizable('enable');              // ENABLE RESIZABLES
             $.cookie('move-widget-' + id + '',1, { expires:10 } );
             widget.addClass('movemode');
-        }
+        }*/
 	});
+	
     // WIDGET RESIZE 
 	$('a.wesley-cmsnav-widget-resize').live('click',function(e){
 		e.preventDefault();
+		/*
 		var widget = $(this).parents('.wesley-cmsnav-widget');
 		var that = this;
 		var spot = widget.parents('.wesley-spot');
@@ -436,6 +643,7 @@ $(document).ready(function() {
             $.cookie('resize-widget-' + id + '',1, { expires:10 } );
             widget.addClass('resizemode');
         }
+        */
 	});
     
     // GET CURRENT PAGE WIDGETS FOR EACH SPOT
@@ -891,12 +1099,12 @@ $(document).ready(function() {
             $("#wesley-html-editor-html").val(theDom);
             $("#wesley-html-editor-html").focus();
             
-            var htmlEditor =    CodeMirror.fromTextArea(document.getElementById("wesley-html-editor-html"), {
+            /*var htmlEditor =    CodeMirror.fromTextArea(document.getElementById("wesley-html-editor-html"), {
                                     mode: "text/html",
                                     height: "197px",
                                     lineNumbers: true,
                                     readOnly: true
-                                });
+                                });*/
             
             // <PRE> ELEMENTS IN THE HTML EDITOR WILL NOT WORK WITH THE TARGETING TOOL IF IT HASN"T BEEN VISIBLE YET (scrolled over)
             //setTimeout(function(){

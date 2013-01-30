@@ -143,6 +143,118 @@ class Pages {
 		return $attributesArray;
 	}
 
+	function cmsFilemenu(){
+	  global $_SETTINGS;
+	  $content = "";
+	  
+	  $content .= "  <div id='wesley-filemenu'>
+	                   
+	                   <ul>
+	                     <li><a><b>Wesley</b></a></li>
+                         <li><a>File</a></li>
+	                     <li><a>Edit</a></li>
+	                     <li><a>View</a></li>
+	                     <li><a>Window</a></li>
+	                     <li><a>Help</a></li>
+                       </ul>
+	      
+	                   
+	                 </div>
+	                 <div id='x-ruler'></div>
+	                 <div id='x-ruler-guide'></div>
+	      
+	                 <div id='y-ruler'></div>
+	                 <div id='y-ruler-guide'></div>
+	                 <div id='file-ruler-spacer'></div>
+	      ";
+	  return $content;
+	}
+	
+	function cmsToolbox(){
+	  global $_SETTINGS;
+	  $content = "";
+	  $panelHtml = "";
+	  // GET WIDGET LIST
+	  $widgetList = "	<div id='wesley-toolbox'>
+							<div id='wesley-toolbox-widgetstitle'>Tools</div>
+							<div id='wesley-toolbox-toolmenu-tools'>
+	                        <ul>";
+	  $widgets = $this->arrayWidgets();
+	  foreach($widgets as $widget)
+	  {
+	    $type = 'draggable';
+	    
+	    // is this widget dragable or clickable
+	    ini_set("auto_detect_line_endings", true);
+	    $subtools = array();
+	    $filename = "admin/widgets/".$widget[0]."/README";
+	    if(is_file($filename)){
+    	    $fp = fopen( $filename, "r" ) or die("Couldn't open $filename");
+    	    $st = 0;
+    	    while ( ! feof( $fp ) ) {
+    	      $line = fgets( $fp, 1024 );
+    	      $lineArray = explode(":",$line);
+    	      if($lineArray[0] == 'type'){ $type = strtolower(str_replace(" ","",$lineArray[1])); }
+    	      if($lineArray[0] == 'subtool'){ 
+    	        //$subtools[$st] = 
+    	        $stArray = explode(",",str_replace(" ","",$lineArray[1]));
+    	        $subtools[$st] = $stArray[0];
+    	        $st++;
+    	      }
+    	      //print "$line<br>";
+    	    }
+	    }    
+
+	    //var_dump($subtools);
+	    
+	    $widgetList .= "	<li type='".$type."' id='".$widget[0]."' title='".$widget[0]."' widget='".$widget[0]."' widgetpath='".$widget[1]."' page=".urlRequest('page')." >";
+	    //$widgetList .= "		<img src='/admin/widgets/".$widget[0]."/icon.png' alt='".$widget[0]."' title='".$widget[0]."' />";
+	    $widgetList .= "		<span>".ucwords(str_replace("_"," ",$widget[0]))."</span>";
+	    
+	    $st = 0;
+	    foreach($subtools as $subtool){
+	      if($st == 0){ $widgetList .= "<ul>"; }
+	      $widgetList .= "                <li title=".$subtool.">";
+	      $widgetList .= "		            <span>".ucwords(str_replace("_"," ",$subtool))."</span>";
+	      $widgetList .= "                </li>";
+	      //if($st == 0){ $widgetList .= "</ul>"; }
+	      $st++;
+	    }
+	    if($subtools){
+	      $widgetList .= "</ul>";
+	    }
+	    
+	    $widgetList .= "	</li>";
+	    //$widgetList .= "<li>";
+	    //$widgetList .= "	<div class='wesley-draggable-widget'>";
+	    //$widgetList .= "		".$widget."";
+	    //$widgetList .- "	</div>";
+	    //$widgetList .= "</li>";
+	    
+	    
+	    
+	  }
+	    $widgetList .= "	</ul>
+	        
+	        
+	                        <div class='clear'></div>
+	                        <div id='colorSelector'><div style='background-color: #ffffff'></div></div>                
+	                        
+	                        </div>
+	                      </div>
+	                    </div>";
+	    
+	    
+	    
+	    $content .= $widgetList;
+	    $content .= " <div id='wesley-toolbox-panel'>
+	                    <div id='wesley-toolbox-panel-title'>Options</div>
+	                    <div id='wesley-toolbox-panel-content'></div>
+	                  </div>";
+	    return $content;
+	}
+	
+	
 	// CMS EDITOR
 	function cmsEditor()
 	{
@@ -400,7 +512,8 @@ class Pages {
 	{
         global $_SETTINGS;  
 		$content = "";
-		$content = 'http://wescms.com/themes_websites/'.$_SETTINGS['website_id'].'-'.$this->theme.'';
+		//$content = 'http://wescms.com/themes_websites/'.$_SETTINGS['website_id'].'-'.$this->theme.'';
+		$content = 'http://wescms.com/themes/wes/';
 		return $content;
 	}
 	
@@ -450,7 +563,12 @@ class Pages {
 		// IF NOT EDITING THEN INCLUDE WIDGETS IN SPOTS VIA PHP INCLUDE - IF EDITING THEN WIDGETS INSERTED THROUGH AJAX
 		if(sessionRequest('cms') != 1)
 		{
-			// GET WIDGETS VIA INCLUDE
+		  
+		    // GET WIDGETS (everypage) VIA INCLUDE
+		  
+		  
+		  
+			// GET WIDGETS (just this page)
 			$select = 	"SELECT * FROM things ".
 						"WHERE 1=1 ".
 						"AND parent_thing_id = '0' ".
@@ -478,6 +596,9 @@ class Pages {
 				$i++;
 			}
 		}
+		
+		// add the grid
+		//$content .= "<article id='grid'><div class='overlay'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></article>";
 		$content .= "</div>";
 		
 		return $content;
@@ -619,19 +740,40 @@ class Pages {
                                     <!-- LIVEQUERY
                                     <script type='text/javascript' src='http://wescms.com/admin/scripts/livequery/jquery.livequery.js'></script>
                                     -->
-                                     
+			    
+			                        <!-- Color Picker -->
+                                    <script type='text/javascript' src='http://wescms.com/admin/scripts/colorpicker/js/colorpicker.js'></script>
+                                    <script type='text/javascript' src='http://wescms.com/admin/scripts/colorpicker/js/eye.js'></script>
+                                    <script type='text/javascript' src='http://wescms.com/admin/scripts/colorpicker/js/utils.js'></script>
+			    
+			                        <link rel='stylesheet' href='http://wescms.com/admin/scripts/colorpicker/css/colorpicker.css' type='text/css' />
+			    
+			    
                                     <!-- ckEDITOR -->
                                     <script type='text/javascript' src='http://wescms.com/admin/scripts/ckeditor/ckeditor.js'></script>
                                     <script type='text/javascript' src='http://wescms.com/admin/scripts/ckeditor/adapters/jquery.js'></script>
                                     <!-- <script src='http://wescms.com/admin/scripts/ckeditor/_samples/sample.js' type='text/javascript'></script> -->
                                     
 									<!-- PAGES FRONTEND SCRTIPT -->
-									<script type='text/javascript' src='http://wescms.com/admin/modules/pages/scripts/frontend_script.js'></script>
-                                    
-									<!-- STYLES -->
-									<link rel='stylesheet' type='text/css' href='http://wescms.com/admin/scripts/jquery-ui-1.8.16.custom/css/custom-theme/jquery-ui-1.8.16.custom.css' media='screen, projection, tv' />
+									<script type='text/javascript' src='http://wescms.com/admin/modules/pages/scripts/frontend_script.js'></script>";
+
+			
+			// Toolbox / widget scripts
+			// GET MODULE SPECIFIC BACKEND JAVASCRIPTS
+			$tools = arrayDirectories($_SETTINGS['DOC_ROOT']."admin/widgets/");
+			foreach($tools as $tool){
+			  if(is_file('admin/widgets/'.$tool.'/script.js')){
+			    $cmsEditorScript .= "
+			                        <script type='text/javascript' src='http://wescms.com/admin/widgets/".$tool."/script.js'></script>";
+			  }
+			}
+									
+			$cmsEditorScript .= "   <!-- STYLES -->
+			                        <link rel='stylesheet' type='text/css' href='http://wescms.com/admin/scripts/jquery-ui-1.8.16.custom/css/custom-theme/jquery-ui-1.8.16.custom.css' media='screen, projection, tv' />
 									<link rel='stylesheet' type='text/css' href='http://wescms.com/admin/modules/pages/styles/frontend_styles.css' />";
-			$cmsEditorNav = $this->cmsEditor();
+			//$cmsEditorNav = $this->cmsEditor();
+			$cmsEditorNav = $this->cmsToolbox();
+			$cmsFileMenu = $this->cmsFilemenu();
 		}
 		// LIVE WEBSITE MANDATORY CSS & JS
 		else
@@ -655,22 +797,28 @@ class Pages {
 		
         // NEW GET THE INDEX FOR THEME EDITING AND CUSTOM THEMES
         // IF THERE IS NO CUSTOM FOLDER FOR THIS THEME THEN CREATE IT
-		if(!is_file('themes_websites/'.$_SETTINGS['website_id'].'-'.$this->theme.'index.html'))
+		/*if(!is_file('themes_websites/'.$_SETTINGS['website_id'].'-'.$this->theme.'index.html'))
         {
             // COPY FROM THE THEMES FOLDER
             $src = 'themes/'.$this->theme.'';
             $dst = 'themes_websites/'.$_SETTINGS['website_id'].'-'.$this->theme.'';
             recurse_copy($src,$dst);
-        }
+        }*/
         
         // GET THE THEME INDEX
-		if(is_file('themes_websites/'.$_SETTINGS['website_id'].'-'.$this->theme.'index.html'))
+		/*if(is_file('themes_websites/'.$_SETTINGS['website_id'].'-'.$this->theme.'index.html'))
 		{
 			$content .= file_get_contents('themes_websites/'.$_SETTINGS['website_id'].'-'.$this->theme.'index.html');
 		} else {
 			wesleySystemError('File themes_websites/'.$_SETTINGS['website_id'].'-'.$this->theme.'index.html does not exist...');
-		}
+		}*/
         
+		
+		/**
+		 * Everysite will now use the same base theme
+		 */
+		$content .= file_get_contents('themes/wes/index.html');
+		
 		
 		//
 		// WES TAG REPLACE		
@@ -709,6 +857,7 @@ class Pages {
 		/**
 		 * ADD THE CMS EDITOR AND REQUIRED CSS, JS
 		 */
+		$content = str_replace('<body>','<body>'.$cmsFileMenu, $content);
 		$content = str_replace('</head>',$cmsEditorScript.' </head>',$content);		// SCRIPTS GO AT END OF <HEADER>
 		$content = str_replace('</body>',$cmsEditorNav.' </body>',$content);		// EDITOR GOES AT END OF <BODY>
 		

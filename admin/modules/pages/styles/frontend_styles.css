@@ -1,6 +1,6 @@
 body
 {
-	overflow:hidden;	
+	/*overflow:hidden;*/	
 }
 
 /** SITE EDITOR
@@ -13,8 +13,8 @@ body
 	min-height:25%;
 	height:25%;
 	background:#BBB9BA;
-	/*position:fixed;
-	bottom:0px;*/
+	/*position:fixed;*/
+	bottom:0px;
 	border-top:1px solid #BBB9BA;
 	border-bottom:1px solid #808080;
 	box-shadow:0px 18px 10px 10px #000;
@@ -22,7 +22,8 @@ body
 	-webkit-box-shadow:0px 18px 10px 10px #000;
 	font-family: arial;
     position:absolute;
-    z-index:100;
+    z-index:10000000000;
+    
 	
 }
 
@@ -442,6 +443,267 @@ background-image: url("/admin/modules/pages/images/icons/color_18/add.png");
 	padding:5px;
 }
 
+/**
+ * Filemenu
+ */
+#wesley-filemenu{
+	background: none repeat scroll 0 0 #CCCCCC;
+    left: 0;
+    /*position: fixed;*/
+    /*top: 0;*/
+    width: 100%;
+    z-index: 1000000;
+    position:fixed;
+    /*left:-99%;*/
+    /*box-shadow:0 1px 2px -1px #000000;
+    -moz-box-shadow:0 1px 2px -1px #000000;
+    -webkit-box-shadow:0 1px 2px -1px #000000;*/
+    opacity:1;
+}
+
+#x-ruler{
+    background: none repeat scroll 0 0 #CCCCCC;
+    border-bottom: 1px solid #BBBBBB;
+    border-top: 1px solid #BBBBBB;
+    height: 20px;
+    position: fixed;
+    top: 20px;
+    width: 800px;
+    z-index: 1000000;
+}
+
+#y-ruler{
+    background: none repeat scroll 0 0 #CCCCCC;
+    border-right: 1px solid #BBBBBB;
+    border-top:1px solid #c5c5c5;
+    height: 400px;
+    position: fixed;
+    top: 41px;
+    width: 20px;
+    z-index: 1000000;
+}
+
+#file-ruler-spacer{
+	height:42px;
+	width:100%;
+	display:block;
+}
+
+#wesley-filemenu-handle-open,
+#wesley-filemenu-handle-close{
+	display:block;
+	float:right;
+	background:#bbb;
+	width:1%;
+	height:14px;
+	padding:3px 3px;
+	line-height:14px;
+}
+
+#wesley-filemenu-handle-close{
+	display:none;
+	float:left;
+}
+
+#wesley-filemenu ul li{
+	float:left;
+	display:block;
+}
+
+	
+#wesley-filemenu ul li a{
+	display:block;
+	padding:3px 10px;
+	height:14px;
+	line-height:14px;
+	font-size:11px;
+	font-family:arial;
+	color:#000;
+}
+
+#wesley-filemenu ul li a:hover{
+    background:blue;
+    color:#fff;	
+}
+
+#wesley-filemenu ul li a b{
+    font-weight:bold;	
+    
+}
+
+/**
+ * Toolbox panel
+ */
+#wesley-toolbox-panel{
+	background-color: #CCCCCC;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 2px -1px #000000;
+    opacity: 1;
+    position: fixed;
+    right: 100px;
+    top: 200px;
+    width: 200px;
+    min-height:100px;
+    z-index: 1000000001;
+}
+
+/**
+ * Toolbox
+ */
+#wesley-toolbox{
+	width:56px;
+	/*height:200px;*/
+	top:30px;
+	right:30px;
+    position:fixed;
+    background-color:#ccc;
+    z-index:1000000000;
+    opacity:1;
+    border:1px solid #ccc;
+    
+    box-shadow:0 1px 2px -1px #000000;
+    -moz-box-shadow:0 1px 2px -1px #000000;
+    -webkit-box-shadow:0 1px 2px -1px #000000;
+}
+ 
+#wesley-toolbox-toolmenu-tools ul li{
+	float:left;
+	width:24px;
+	height:24px;
+	text-indent:-9999px;
+	display:block;
+	border:1px solid #bbbbbb;
+	background:#eee;
+	margin:1px;
+}
+
+#wesley-toolbox-toolmenu-tools ul li:hover{
+    background:#fff;
+}
+
+#wesley-toolbox-toolmenu-tools ul li.active{
+    background:#bbb;
+    box-shadow:0 1px 2px 0px #999 inset;
+    -moz-box-shadow:0 1px 2px 0px #999 inset;
+    -webkit-box-shadow:0 1px 2px 0px #999 inset;
+}
+
+#wesley-toolbox-toolmenu-tools ul li ul{
+    background: none repeat scroll 0 0 #CCCCCC;
+    display: none;
+    margin-left: -31px;
+    margin-top: -19px;
+    padding: 1px;
+    width: 28px;
+}
+
+#wesley-toolbox-toolmenu-tools ul li ul li{
+    float:none;
+    clear:both;
+    margin-bottom:2px;
+}
+
+#wesley-toolbox-toolmenu-tools ul li:hover ul,
+#wesley-toolbox-toolmenu-tools ul li.active ul
+{
+    display:block;
+}
+
+#wesley-toolbox-widgetstitle,
+#wesley-toolbox-panel-title{
+	border-bottom:1px solid #ccc;
+	cursor:move;
+	font-size:10px;
+	text-align:center;
+	font-family:arial;
+	height:14px;
+	line-height:14px;
+	background:#ccc;
+}
+
+/**
+ * Color Selector
+ */
+#colorSelector{
+	clear:both;
+	background:#bbb;
+	/*background: url("http://wescms.com/admin/scripts/colorpicker/images/select.png") repeat scroll 0 0 transparent;*/
+    height: 52px;
+    position: relative;
+    width: 52px;
+    margin:2px;
+}
+
+#colorSelector div{
+   
+    height: 48px;
+    left: 2px;
+    position: absolute;
+    top: 2px;
+    width: 48px;
+}
+
+.clear{
+	clear:both;
+	height:0px;
+	width:0px;
+	display:block;
+}
+
+/**
+ * Rulers
+ */
+#wesley-ruler-website-width{
+    border-left:1px solid #c5c5c5;
+    border-right:1px solid #c5c5c5;
+    height: 20px;
+    position: relative;
+}
+
+#x-ruler-guide{
+    height: 21px;
+    position: fixed;
+    top: 21px;
+    width: 100%;
+    z-index:1000000000;
+}
+
+.ruler-px{
+	width:1px;
+	height:10px;
+    float:left;
+    margin-left:4px;
+	margin-top:10px;
+	background:#bbb;
+}
+
+.yruler-px{
+    background: none repeat scroll 0 0 #BBBBBB;
+    clear: both;
+    display: block;
+    height: 1px;
+    margin-left: 10px;
+    margin-top: 4px;
+    width: 10px;
+}
+
+.wesley-x-guide{
+	height:1px;
+	width:100%;
+	border-top:1px dotted #9bf776;
+	z-index:100000;
+}
+
+.wesley-y-guide{
+    height:1000px;
+    width:1px;
+    border-left:1px dotted #9bf776;
+    z-index:100000;
+}
+/*
+.ruler-px:nth-child(even){
+}
+*/
 
 /** SPOT STYLES
 **********************************************************************************/
@@ -449,12 +711,12 @@ background-image: url("/admin/modules/pages/images/icons/color_18/add.png");
 {
 	/*border: 1px solid #dae9ef;*/
 	background:#dae9ef;
-	border-radius: 3px;
+	/*border-radius: 3px;*/
 	/*box-shadow: 0 0 8px -2px #000000 inset;*/
 	padding: 0px;
 	position:relative;
 	margin:0px;
-	border:1px solid transparent;
+	/*border:1px solid transparent;*/
 }
 
 
@@ -551,14 +813,14 @@ background-image: url("/admin/modules/pages/images/icons/color_18/add.png");
 
 .wesley-cmsnav-widget.active-widget{
 	/*opacity:1.0;*/
-	z-index:900;
-    outline:1px dotted blue
+	/*z-index:900;
+    outline:1px dotted blue*/
 }
 
 
 .wesley-cmsnav-widget:hover .wesley-cmsnav-widget-toolbar
 {
-	z-index:901;
+	z-index:10000000000000;
 	visibility:visible;
 	position:relative;
 	opacity:0.95;
@@ -645,6 +907,11 @@ background-image: url("/admin/modules/pages/images/icons/color_18/add.png");
 
 .ui-resizable{
 	position:relative;
+}
+
+.ui-draggable-dragging.wesley-cmsnav-widget{
+	/*margin-bottom:20px !important;*/
+	opacity:0.8;
 }
 
 /** Widget File Manager Panel Styles

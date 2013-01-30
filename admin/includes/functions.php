@@ -687,6 +687,31 @@ function powerTable($table,$columns)
 	echo $content;
 }
 
+/**
+ * 
+ * 
+ * 
+ */
+function getWebsiteLayerIndex(){
+  global $_SETTINGS;
+  $layerIndex = 10001;
+  $select = "  SELECT zindex 
+               FROM things 
+               WHERE 
+               parent_thing_id='' AND 
+               website_id = '".$_SETTINGS['website_id']."' AND 
+               active = '1' 
+               ORDER BY zindex DESC 
+               LIMIT 1";
+  $result = doQuery($select);
+  $row = mysql_fetch_array($result);
+  return $row['zindex'];
+}
+
+function getWidgetLayerIndex($thing_id){
+  return 1;
+}
+
 // TRUNCATE STRING
 /**
  * truncateHtml can truncate a string up to a number of characters while preserving whole words and HTML tags
@@ -966,7 +991,34 @@ function ajaxDelete($table,$xid,$column_id)
 	return true;
 }
 
-function widgetHeader($title,$width,$height,$panelpath,$id,$top,$left,$buttons="",$overflowHidden=true)
+function widgetNav($buttons=""){
+  $content = "";
+  $content .= "	<div class='wesley-cmsnav-widget-toolbar'>";
+  //$content .= "		<span>".($title != "" ? $title : "Widget")."</span>";
+  $content .= "		<ul class='wesley-cmsnav-buttons wesley-cmsnav-rightbuttons' style='float:right;'>";
+  
+  // ADD BUTTONS
+  if($buttons != "")
+  {
+    $buttons = rtrim($buttons,",");
+    $buttonsArray = explode(",",$buttons);
+    foreach($buttonsArray as $toolbarButton)
+    {
+      $content .= "		<li><a href='javascript:void(0);' class='wesley-cmsnav-widget-".$toolbarButton."'>".ucwords($toolbarButton)."</a></li>";
+    }
+  }
+  
+  $content .= "			<li><a href='' class='wesley-cmsnav-widget-move'>Move</a></li>
+						<!-- <li><a href='' class='wesley-cmsnav-widget-resize'>Resize</a></li>-->
+						<li><a href='' class='wesley-cmsnav-widget-close'>Delete</a></li>";
+  
+  $content .= "		</ul>";
+  $content .= "	</div>";
+  
+  return $content;
+}
+
+function widgetHeader($title,$width,$height,$panelpath,$id,$top,$left,$buttons="",$overflowHidden=true,$zIndex=10001)
 {
 	// TITLE 		= The widget's name in the title bar
 	// WIDTH 		= The widget's default width
@@ -986,6 +1038,7 @@ function widgetHeader($title,$width,$height,$panelpath,$id,$top,$left,$buttons="
 	if(sessionRequest('cms') == 1){
 		$content .= "<div class='wesley-cmsnav-widget ".$overflowClass." cms-widget' id='".$id."' top='".$top."' left='".$left."' panelpath='".$panelpath."' style='width:".$width."; height:".$height."; top:".$top."; left:".$left.";'>";
 		
+		
 		$content .= "	<div class='wesley-cmsnav-widget-toolbar'>";
 		//$content .= "		<span>".($title != "" ? $title : "Widget")."</span>";		
 		$content .= "		<ul class='wesley-cmsnav-buttons wesley-cmsnav-rightbuttons' style='float:right;'>";
@@ -1002,11 +1055,12 @@ function widgetHeader($title,$width,$height,$panelpath,$id,$top,$left,$buttons="
 		}						
 		
 		$content .= "			<li><a href='' class='wesley-cmsnav-widget-move'>Move</a></li>
-								<li><a href='' class='wesley-cmsnav-widget-resize'>Resize</a></li>
+								<!-- <li><a href='' class='wesley-cmsnav-widget-resize'>Resize</a></li> -->
 								<li><a href='' class='wesley-cmsnav-widget-close'>Close</a></li>";
 		
 		$content .= "		</ul>";
 		$content .= "	</div>";
+		
 		
 		$content .= "	<div class='wesley-cmsnav-widget-content'>";
 	} else {

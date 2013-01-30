@@ -200,7 +200,8 @@ if(isset($_POST['dropwidget']) == '1')
 	$spot	= $_POST['spot'];
 	$page	= $_POST['page'];
 	$widget = $_POST['widget'];
-	
+	$websiteLayerIndex = getWebsiteLayerIndex();
+	$websiteLayerIndex++;
 	// INSERT THE SPOT - PAGE - WIDGET RELATIONSHIP AS A THING
 	$nextId = 	nextId('things');
 	$insert = 	"INSERT INTO things SET ".
@@ -211,7 +212,16 @@ if(isset($_POST['dropwidget']) == '1')
 				"widget='".$_POST['widget']."',".
 				"widgetpath='".$_POST['widgetpath']."',".
 				"active='1',".
-				"website_id='".$_SETTINGS['website_id']."'";
+				
+			    "`left`='".$_POST['left']."',".
+			    "`top`='".$_POST['top']."',".
+			    "`width`='".$_POST['width']."',".
+			    "`height`='".$_POST['height']."',".
+				"`zindex`='".$websiteLayerIndex."',".
+			    "website_id='".$_SETTINGS['website_id']."'";
+				    
+				
+				
 	doQuery($insert);
 	
 	// get and return the widget
