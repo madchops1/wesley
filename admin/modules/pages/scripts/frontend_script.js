@@ -1,139 +1,236 @@
+/**
+ * Default Vars
+ */
+var currentForgroundColor 	= 'FFFFFF';
+var lastHeight 				= 0;
+var lastWidth 				= 0;
+var hexDigits 				= new Array("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"); 
 
-currentForgroundColor = 'FFFFFF';
-lastHeight = 0;
-lastWidth = 0;
+
+function makeWidgetDraggable(that){
+	$(that).children('.wesley-cmsnav-widget').draggable(
+		{
+			containment: $(that),
+			stop:function(event,ui)
+			{
+				var widget = this;		
+				updateWidget(widget);
+			},
+			//grid: [ 1, 10 ],
+			handle: ".wesley-cmsnav-widget-move",
+			snap: "#grid .overlay div",
+			snapMode: "both",
+			snapTolerance: 5
+			//scroll: true
+		}
+	);
+}
+
+function makeWidgetResizable(that){
+	$(that).children('.wesley-cmsnav-widget').resizable({
+		containment: 'parent',
+		grid: [ 1, 5 ],
+		alsoResize: '.also-resizable-' + $(this).attr('id') + ''
+	});
+}
+
+// Update guide thing
+function updateGuide(guide){
+	var guidePos = $(guide).offset();
+
+	
+	// Save the guide
+	$.ajax(
+	{
+		type:'POST',
+		url:'/admin/modules/pages/panel.php',
+		data:{
+				ajax: "1",
+				updateguide: "1",
+				thing_id:$(guide).attr('thing_id'),
+				top:guidePos.top,
+				left:guidePos.left,
+				color:'',
+				resolution:$("#wesley-spot-workspace").width(),
+				widget: 'guide',
+				name:$(guide).attr('axis'),
+				page:$("#wesley-field-page").val()
+			},
+		success: function(data){
+			//alert();
+		}
+	});
+}
+
+// Update widget thing
+function updateWidget(widget){
+	
+	// Vars
+	var widgetPos = $(widget).offset();
+	var wOffset = $("#wesley-spot-workspace").offset();
+	var Color;
+	
+	// Handle hex 2 rgb
+	if($(widget).css('background-color') != 'transparent'){ Color = rgb2hex($(widget).css('background-color')); }
+	
+	
+	// Save the widget
+	$.ajax(
+	{
+		type:'POST',
+		url:'/admin/modules/pages/panel.php',
+		data:{
+				ajax: "1",
+				updatewidget: "1",
+				thing_id:$(widget).attr('thing_id'),
+				top:widgetPos.top - 42,
+				left:widgetPos.left - wOffset.left,
+				width:$(widget).width(),
+				height:$(widget).height(),
+				zindex:$(widget).attr('layer'),
+				color:Color,
+				resolution:$("#wesley-spot-workspace").width()
+			},
+		success: function(data){
+			//alert();
+		}
+	});
+}
+
+function rgb2hex(rgb) {
+  rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+  return "" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+}
+
+function hex(x) {
+  return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+}
+
+//RESIZE THE EDITOR
+function resizeEditor()
+{
+	var windowHeight = $(window).height();   // returns height of browser viewport
+	var windowWidth = $(window).width();
+	//$(document).height(); // returns height of HTML document
+	
+	var minimized = $.cookie('minimized'); 
+	
+	// contentFrame and Wrapper HEIGHT
+	// GET THE FIRST CHILD OF BODY
+	//var firstChildBody = $('body :nth-child(0)');
+	var firstChildBody = $('#contentFrame');
+			
+	// WRAP THE THEMES INDEX CONTENT FRAME	
+	if(!$('#contentFrameWrapper').length){
+		firstChildBody.wrap('<div id="contentFrameWrapper" />');
+	}
+	var contentFrameWidth = $("#contentFrame").width();
+	//var contentFrameHeight = (windowHeight * 0.75);
+	
+	var navHeight = 250;
+	
+	if(minimized == '1'){
+		navHeight = 27;
+	}
+		
+	var contentFrameHeight = 0;
+	contentFrameHeight = (windowHeight - navHeight);
+	
+	$("#contentFrameWrapper").css("height",contentFrameHeight+"px");
+	$("#contentFrameWrapper").css("width","100%");
+	
+	// CMS NAV HEIGHT
+	//var cmsnavHeight = ((windowHeight * 0.25) - 2);
+	var cmsnavHeight = 0;
+	cmsnavHeight = (navHeight - 2);
+	$("#wesley-cmsnav").css("height",cmsnavHeight+"px");
+	
+	// WIDGET MENU WIDTH
+	var widgetMenuWidth = ((windowWidth * 0.25) - 1);
+	$('#wesley-cmsnav-widgetmenu').css("width",widgetMenuWidth+"px");
+	$('#wesley-cmsnav-css-editor').css("width",widgetMenuWidth+"px");    
+	
+    
+	//
+	var contenteditareaWidth = ((windowWidth * 0.75) - 1);
+	$('#wesley-cmsnav-contenteditarea').css("width",contenteditareaWidth+"px");
+    $('#wesley-cmsnav-designeditarea').css("width",contenteditareaWidth+"px");
+    
+}
+
+
+function resizeWorkspace(){
+	// SETUP SPOTS | OFFSET WESLEY SPOTS BORDER, MARGIN, PADDING
+	// HEIGHT
+	$('#wesley-toolbox').css('right','50px');
+	$('#wesley-toolbox').css('top','50px');
+	
+	$('.wesley-spot').height(function(){
+		return (($(this).parent().parent().height()) - 42);
+	});
+	
+	var windowHeight = $(window).height();   // returns height of browser viewport
+	var windowWidth = $(window).width();
+	
+	//re-put widgets
+	if(windowWidth < 960 && windowWidth > 720){
+		//$("")
+	}
+	
+	
+	//console.log(windowWidth+" x "+windowHeight);
+	
+	$('#grid').height(function(){
+		return (($(this).parent().height()) - 0);
+	});
+}
+
+/**
+ * Setup the rulers
+ */
+function resizeRulers(){
+	var windowHeight = $(window).height();   // returns height of browser viewport
+	var windowWidth = $(window).width();
+	
+	
+	if(windowWidth != lastWidth){
+		// x ruler
+		xrulerOffset = $("#wesley-spot-workspace").offset();
+		$("#x-ruler").css('width',windowWidth+'px');
+		$("#x-ruler").html("<div id='wesley-ruler-website-width'></div>");
+		$("#wesley-ruler-website-width").css('width',($('#wesley-spot-workspace').width() - 2)+'px');
+		$("#wesley-ruler-website-width").css('left', xrulerOffset.left+'px');
+		
+		for (var i=0; i<($('#wesley-spot-workspace').width()-5)/5; i++){
+			//document.write(cars[i] + "<br>");
+			$("#wesley-ruler-website-width").prepend('<div class="ruler-px"></div>');
+		}
+	}
+	lastWidth = windowWidth;
+	
+	var body = document.body,
+    html = document.documentElement;
+
+	var height = Math.max( body.scrollHeight, body.offsetHeight, 
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+	
+	if(height != lastHeight){
+		// y ruler
+		$("#y-ruler").css('height',height+'px');
+		$("#y-ruler-guide").css('height',height+'px');
+		
+		for (var i=0; i<(height-5)/5; i++){
+			//document.write(cars[i] + "<br>");
+			$("#y-ruler").prepend('<div class="yruler-px"></div>');
+		}
+	}
+	lastHeight = windowHeight;
+}
 
 $(document).ready(function() {
 	$("#wesley-toolbox-panel").hide();
 	// COOKIE FOR THE EDITOR
 	//$.cookie('minimized', '0'); 
-	
-	// RESIZE THE EDITOR
-	function resizeEditor()
-	{
-		var windowHeight = $(window).height();   // returns height of browser viewport
-		var windowWidth = $(window).width();
-		//$(document).height(); // returns height of HTML document
-		
-		var minimized = $.cookie('minimized'); 
-		
-		// contentFrame and Wrapper HEIGHT
-		// GET THE FIRST CHILD OF BODY
-		//var firstChildBody = $('body :nth-child(0)');
-		var firstChildBody = $('#contentFrame');
-				
-		// WRAP THE THEMES INDEX CONTENT FRAME	
-		if(!$('#contentFrameWrapper').length){
-			firstChildBody.wrap('<div id="contentFrameWrapper" />');
-		}
-		var contentFrameWidth = $("#contentFrame").width();
-		//var contentFrameHeight = (windowHeight * 0.75);
-		
-		var navHeight = 250;
-		
-		if(minimized == '1'){
-			navHeight = 27;
-		}
-			
-		var contentFrameHeight = 0;
-		contentFrameHeight = (windowHeight - navHeight);
-		
-		$("#contentFrameWrapper").css("height",contentFrameHeight+"px");
-		$("#contentFrameWrapper").css("width","100%");
-		
-		// CMS NAV HEIGHT
-		//var cmsnavHeight = ((windowHeight * 0.25) - 2);
-		var cmsnavHeight = 0;
-		cmsnavHeight = (navHeight - 2);
-		$("#wesley-cmsnav").css("height",cmsnavHeight+"px");
-		
-		// WIDGET MENU WIDTH
-		var widgetMenuWidth = ((windowWidth * 0.25) - 1);
-		$('#wesley-cmsnav-widgetmenu').css("width",widgetMenuWidth+"px");
-    	$('#wesley-cmsnav-css-editor').css("width",widgetMenuWidth+"px");    
-		
-        
-		//
-		var contenteditareaWidth = ((windowWidth * 0.75) - 1);
-		$('#wesley-cmsnav-contenteditarea').css("width",contenteditareaWidth+"px");
-        $('#wesley-cmsnav-designeditarea').css("width",contenteditareaWidth+"px");
-        
-        
-        
-        
-	}
-	
-	function resizeWorkspace(){
-		// SETUP SPOTS | OFFSET WESLEY SPOTS BORDER, MARGIN, PADDING
-		// HEIGHT
-		$('#wesley-toolbox').css('right','50px');
-		$('#wesley-toolbox').css('top','50px');
-		
-		$('.wesley-spot').height(function(){
-			return (($(this).parent().parent().height()) - 42);
-		});
-		
-		var windowHeight = $(window).height();   // returns height of browser viewport
-		var windowWidth = $(window).width();
-		
-		//re-put widgets
-		if(windowWidth < 960 && windowWidth > 720){
-			//$("")
-		}
-		
-		
-		//console.log(windowWidth+" x "+windowHeight);
-		
-		$('#grid').height(function(){
-			return (($(this).parent().height()) - 0);
-		});
-	}
-	
-	/**
-	 * Setup the rulers
-	 */
-	function resizeRulers(){
-		var windowHeight = $(window).height();   // returns height of browser viewport
-		var windowWidth = $(window).width();
-		
-		
-		if(windowWidth != lastWidth){
-			// x ruler
-			xrulerOffset = $("#wesley-spot-workspace").offset();
-			$("#x-ruler").css('width',windowWidth+'px');
-			$("#x-ruler").html("<div id='wesley-ruler-website-width'></div>");
-			$("#wesley-ruler-website-width").css('width',($('#wesley-spot-workspace').width() - 2)+'px');
-			$("#wesley-ruler-website-width").css('left', xrulerOffset.left+'px');
-			
-			for (var i=0; i<($('#wesley-spot-workspace').width()-5)/5; i++){
-				//document.write(cars[i] + "<br>");
-				$("#wesley-ruler-website-width").prepend('<div class="ruler-px"></div>');
-			}
-		}
-		lastWidth = windowWidth;
-		
-		var body = document.body,
-	    html = document.documentElement;
-
-		var height = Math.max( body.scrollHeight, body.offsetHeight, 
-	                       html.clientHeight, html.scrollHeight, html.offsetHeight );
-		
-		if(height != lastHeight){
-			// y ruler
-			$("#y-ruler").css('height',height+'px');
-			
-			for (var i=0; i<(height-5)/5; i++){
-				//document.write(cars[i] + "<br>");
-				$("#y-ruler").prepend('<div class="yruler-px"></div>');
-			}
-		}
-		lastHeight = windowHeight;
-	}
-	
-
-	
-	
-	
 	
 	//resizeEditor();							// INITIALLY RESIZE THE EDITOR		
 	//$(window).resize(resizeEditor);			// RESIZE THE EDITOR ON WINDOW RESIZE
@@ -143,41 +240,70 @@ $(document).ready(function() {
 	$(window).resize(resizeWorkspace);
 	$(window).resize(resizeRulers);
 	
-	
-
 	$("#x-ruler-guide").draggable({
         axis: "y",
-        cursor: "move",
         //cursorAt: { top: -12, left: -20 },
         helper: function( event ) {
-        	return $( "<div class='wesley-x-guide'></div>" );
-        }
-        /*containment: "#wesley-spot-workspace"*/ /*,
-        drag: function() {
-            var position = $(this).position();
-            var xPos = $(this).css('left');
-            $(this).find($('.pos')).text('X: ' + xPos);
+        	return $( "<div class='wesley-x-guide' thing_id='' axis='x'></div>" );
         },
-        start: function() {
-            $(this).find($('.pos')).css('display', 'block');
-        },
-        stop: function() {
-            $(this).find($('.pos')).css('display', 'none');
+        drag: function(event, ui) {
 
-            if ($(this).hasClass("draggable-x-newest")) {
-                $(this).removeClass("draggable-x-newest");
-                $("#canvas .x-guide").clone().removeClass("x-guide").addClass("draggable-x-newest").appendTo("#canvas").each(function() {
-                    makeGuideX(this);
-                });
-            }
-        }*/
+        },
+        stop: function(event, ui) {
+        	
+        	//yPos = $(ui.helper).css('top') + 21;
+        	var newGuide = $(ui.helper).clone();
+        	$("body").prepend(newGuide);
+        	$(newGuide).draggable({
+        		axis: "y"
+        	});
+        	
+        	
+        	// TODO...
+        	// Save guide as a thing for this page
+        	updateGuide(newGuide);
+        }
     });
 
-	$("#y-ruler-guide").each(function() {
-	//    makeGuideY(this);
-		
-		
-	});
+	
+	$("#y-ruler-guide").draggable({
+        axis: "x",
+        //cursorAt: { top: -12, left: -20 },
+        helper: function( event ) {
+        	return $( "<div class='wesley-y-guide' thing_id='' axis='y'></div>" );
+        },
+        drag: function(event, ui) {
+        	
+        },
+        stop: function(event, ui) {
+        	
+        	var newGuide = $(ui.helper).clone();
+        	$("#wesley-spot-workspace").prepend(newGuide);
+        	
+        	newGuideOffset = $(newGuide).offset();
+        	workSpaceOffset = $("#wesley-spot-workspace").offset();
+        	newOffset = newGuideOffset.left - (workSpaceOffset.left*2);
+        	
+        	console.log('newGuideOffset: '+newGuideOffset.left);
+        	console.log('workSpaceOffset: '+workSpaceOffset.left);
+        	console.log('newOffset: '+newOffset);
+        	
+        	$(newGuide).css("left", newOffset);
+        	
+        	$(newGuide).draggable({
+        		axis: "x"
+        			
+        			// TODO...
+        			// Save the guide on every movement....
+        			
+        	});
+        	
+        	
+        	// TODO...
+        	// Save guide as a thing for this page
+        	updateGuide(newGuide);
+        }
+    });
 	
 	
 	//$(window).scroll(resizeWorkspace);
@@ -302,27 +428,7 @@ $(document).ready(function() {
 		}
 	});
 
-	// UPDATE WIDGET SIZE AND POSITION
-    function updateWidgetSizeAndPosition(widget){
-		// AJAX WIDGET SIZE AND POSITION TO SPOT
-		$.ajax(
-		{
-			type:'POST',
-			url:'/admin/modules/pages/panel.php',
-			data:{
-					ajax: "1",
-					updatewidgetposition: "1",
-					thing_id:$(widget).attr('id'),
-					top:$(widget).attr('top'),
-					left:$(widget).attr('left'),
-					width:$(widget).width(),
-					height:$(widget).height()
-				},
-			success: function(data){
-				//alert();
-			}
-		});
-	}
+	
 	
 	/**
      * Droppable workspace / spot
@@ -754,12 +860,6 @@ $(document).ready(function() {
 	
 	// GET AN INDIVIDUAL SPOTS WIDGETS
 	function getIndividualSpotsWidgets(that){
-		//alert('REFRESH SPOT ' + spot + '');
-		
-		var everypage = '';
-		if($(that).hasClass('everypage')){
-			everypage = 'true';
-		}
 		// AJAX CURRENT WIDGETS
 		$.ajax({
 			type:	'POST',
@@ -768,27 +868,16 @@ $(document).ready(function() {
 						ajax: "1",
 						getwidgets: "1",
 						page:$("#wesley-field-page").val(),
-						spot:$(that).attr('id'),
-						everypage: everypage
+						spot:$(that).attr('id')
 					},
 			success: function(data){
 				$(that).prepend(data); // ADD THE DATA TO THE SPOT
                 
                 // MAKE IT DRAGGABLE
-				$(that).children('.wesley-cmsnav-widget').draggable(
-				{
-					containment: $(that),
-					stop:function(event,ui)
-					{
-						var top = $(this).css('top');
-						var left = $(this).css('left');
-						$(this).attr('top',top);
-						$(this).attr('left',left);
-						widget = this;
-						updateWidgetSizeAndPosition(widget);
-					}
-				});
+				makeWidgetDraggable(that);
+				makeWidgetResizable(that);
 				
+				/*
                 // MAKE IT RESIZABLE
 				$(that).children('.wesley-cmsnav-widget').resizable(
 				{
@@ -843,7 +932,7 @@ $(document).ready(function() {
 							}
 							
 							var widget = this;
-							updateWidgetSizeAndPosition(widget);
+							updateWidget(widget);
 						});
 						
 						// ON STOP RESET TO PREVIOUS POSITION
@@ -853,18 +942,20 @@ $(document).ready(function() {
 						
 					}
 				});
-                
+                */
                 
                 
                 // INITIALLY DISSABLE THE DRAGGABLE & RESIZABLE
-                $('.wesley-cmsnav-widget').draggable('disable');        // DISABLE DRAGGABLES
-                $('.wesley-cmsnav-widget').resizable('disable');        // DISABLE RESIZABLES
+                //$('.wesley-cmsnav-widget').draggable('disable');        // DISABLE DRAGGABLES
+                //$('.wesley-cmsnav-widget').resizable('disable');        // DISABLE RESIZABLES
                 
-                $.cookie('resize-widget-' + $(this).attr('id') + '',0, { expires:10 } );
-                $.cookie('move-widget-' + $(this).attr('id') + '',0, { expires:10 } );
+                //$.cookie('resize-widget-' + $(this).attr('id') + '',0, { expires:10 } );
+                //$.cookie('move-widget-' + $(this).attr('id') + '',0, { expires:10 } );
 			}		
 		});
 	}
+	
+	
 	
 	// PENCIL IMAGE FOR AJAX INPUT AND TEXTAREA
 	$('.ajax-widget-input').live('focusin', function(){

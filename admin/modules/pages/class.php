@@ -150,10 +150,24 @@ class Pages {
 	  $content .= "  <div id='wesley-filemenu'>
 	                   
 	                   <ul>
-	                     <li><a><b>Wesley</b></a></li>
+	                     <li>
+	                      <a><b>Wesley</b></a>
+	                      <ul>
+                            <li><a><span></span>About Wesley</a></li>
+                            <li><a><span></span>Preferences</a></li>
+                         </ul>
+	                     </li>
                          <li><a>File</a></li>
 	                     <li><a>Edit</a></li>
-	                     <li><a>View</a></li>
+	                     <li>
+	                       <a>View</a>
+	                       <ul>
+	                         <li><a><span>+</span>Show Grid</a></li>
+	                         <li><a><span>+</span>Show Rulers</a></li>
+	                         <li><a><span></span>Lock Guides</a></li>
+	                         <li><a><span>+</span>Show Blue</a></li>
+	                       </ul>
+	                     </li>
 	                     <li><a>Window</a></li>
 	                     <li><a>Help</a></li>
                        </ul>
@@ -251,6 +265,8 @@ class Pages {
 	                    <div id='wesley-toolbox-panel-title'>Options</div>
 	                    <div id='wesley-toolbox-panel-content'></div>
 	                  </div>";
+	    
+	    $content .= "  <input type='hidden' id='wesley-field-page' value='".$this->getPage()."' />";
 	    return $content;
 	}
 	
@@ -369,6 +385,7 @@ class Pages {
 							
 							<!-- FIELDS -->
 							<input type='hidden' id='wesley-field-page' value='".$this->getPage()."' />
+							    
 							<!--
 							<form>
 								<label>Pages</label>

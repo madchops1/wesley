@@ -446,48 +446,103 @@ background-image: url("/admin/modules/pages/images/icons/color_18/add.png");
 /**
  * Filemenu
  */
-#wesley-filemenu{
-	background: none repeat scroll 0 0 #CCCCCC;
-    left: 0;
-    /*position: fixed;*/
-    /*top: 0;*/
-    width: 100%;
-    z-index: 1000000;
-    position:fixed;
-    /*left:-99%;*/
-    /*box-shadow:0 1px 2px -1px #000000;
-    -moz-box-shadow:0 1px 2px -1px #000000;
-    -webkit-box-shadow:0 1px 2px -1px #000000;*/
-    opacity:1;
-}
+ 
+    #wesley-filemenu{
+	    background: none repeat scroll 0 0 #CCCCCC;
+	    left: 0;
+	
+        height:20px;
+	    width: 100%;
+	    z-index: 1000000000;
+	    position:fixed;
+	    opacity:1;
+	    font-family: arial;
+	    font-size:12px;
+	}
+ 
+	#wesley-filemenu ul ul {
+	    display: none;
+	}
 
-#x-ruler{
-    background: none repeat scroll 0 0 #CCCCCC;
-    border-bottom: 1px solid #BBBBBB;
-    border-top: 1px solid #BBBBBB;
-    height: 20px;
-    position: fixed;
-    top: 20px;
-    width: 800px;
-    z-index: 1000000;
-}
+    #wesley-filemenu ul li:hover > ul {
+        display: block;
+    }
 
-#y-ruler{
-    background: none repeat scroll 0 0 #CCCCCC;
-    border-right: 1px solid #BBBBBB;
-    border-top:1px solid #c5c5c5;
-    height: 400px;
-    position: fixed;
-    top: 41px;
-    width: 20px;
-    z-index: 1000000;
-}
 
-#file-ruler-spacer{
-	height:42px;
-	width:100%;
-	display:block;
-}
+	#wesley-filemenu ul {
+	    /*background: #efefef; 
+	    background: linear-gradient(top, #efefef 0%, #bbbbbb 100%);  
+	    background: -moz-linear-gradient(top, #efefef 0%, #bbbbbb 100%); 
+	    background: -webkit-linear-gradient(top, #efefef 0%,#bbbbbb 100%); 
+	    box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+	    padding: 0 20px;
+	    border-radius: 10px;  */
+	    list-style: none;
+	    position: relative;
+	    display: inline-table;
+	}
+	
+    #wesley-filemenu ul:after {
+        content: ""; clear: both; display: block;
+    }
+
+    #wesley-filemenu ul li {
+        float: left;
+        cursor:pointer;
+    }
+    
+    #wesley-filemenu ul li:hover {
+        /*background: #4b545f;
+        background: linear-gradient(top, #4f5964 0%, #5f6975 40%);
+        background: -moz-linear-gradient(top, #4f5964 0%, #5f6975 40%);
+        background: -webkit-linear-gradient(top, #4f5964 0%,#5f6975 40%);*/
+    }
+    
+    #wesley-filemenu ul li:hover a {
+        color: #fff;
+        background: #4b545f;
+    }
+        
+    #wesley-filemenu ul li a {
+        display: block; 
+        padding: 4px 10px;
+        color: #757575; 
+        text-decoration: none;
+        cursor:pointer;
+    }
+    
+            
+        
+    #wesley-filemenu ul ul {
+        background: #5f6975; 
+        border-radius: 0px;
+        padding: 10px 0;
+        position: absolute; 
+        top: 100%;
+    }
+    
+    #wesley-filemenu ul ul li {
+        float: none; 
+        /*border-top: 1px solid #6b727c;
+        border-bottom: 1px solid #575f6a; position: relative;*/
+    }
+    #wesley-filemenu ul ul li a {
+        padding: 4px 10px;
+        color: #fff;
+        font-size:11px;
+        /*background:#5f6975;*/
+    }   
+    #wesley-filemenu ul ul li a:hover {
+        /*background: #4b545f;*/
+    }
+        
+    #wesley-filemenu ul ul ul {
+        position: absolute; 
+        left: 100%; 
+        top:0;
+    }
+ 
+/* 
 
 #wesley-filemenu-handle-open,
 #wesley-filemenu-handle-close{
@@ -503,12 +558,46 @@ background-image: url("/admin/modules/pages/images/icons/color_18/add.png");
 #wesley-filemenu-handle-close{
 	display:none;
 	float:left;
+}*/
+
+
+/*
+#wesley-filemenu ul{
+    display:inline-table;	
 }
 
-#wesley-filemenu ul li{
+#wesley-filemenu ul:after{
+    clear: both;
+    content: "";
+    display: block;
+}
+
+#wesley-filemenu ul > li{
 	float:left;
 	display:block;
+	
 }
+
+#wesley-filemenu ul ul{
+    background: #bbb;
+    display: none;
+    padding: 0 0px 0px 0px;
+    position:absolute;
+}
+
+#wesley-filemenu ul li:hover ul {
+	display:block;
+}
+
+#wesley-filemenu ul li ul li{
+    clear:both;
+    float:none;
+    display:block;
+    position:relative;
+}
+
+
+
 
 	
 #wesley-filemenu ul li a{
@@ -531,6 +620,8 @@ background-image: url("/admin/modules/pages/images/icons/color_18/add.png");
     
 }
 
+*/
+
 /**
  * Toolbox panel
  */
@@ -544,7 +635,7 @@ background-image: url("/admin/modules/pages/images/icons/color_18/add.png");
     top: 200px;
     width: 200px;
     min-height:100px;
-    z-index: 1000000001;
+    z-index: 10000000002;
 }
 
 /**
@@ -557,7 +648,7 @@ background-image: url("/admin/modules/pages/images/icons/color_18/add.png");
 	right:30px;
     position:fixed;
     background-color:#ccc;
-    z-index:1000000000;
+    z-index:10000000002;
     opacity:1;
     border:1px solid #ccc;
     
@@ -653,6 +744,35 @@ background-image: url("/admin/modules/pages/images/icons/color_18/add.png");
 /**
  * Rulers
  */
+ 
+ 
+#x-ruler{
+    background: none repeat scroll 0 0 #CCCCCC;
+    border-bottom: 1px solid #BBBBBB;
+    border-top: 1px solid #BBBBBB;
+    height: 20px;
+    position: fixed;
+    top: 20px;
+    width: 800px;
+    z-index: 1000000;
+}
+
+#y-ruler{
+    background: none repeat scroll 0 0 #CCCCCC;
+    border-right: 1px solid #BBBBBB;
+    border-top:1px solid #c5c5c5;
+    height: 400px;
+    position: fixed;
+    top: 41px;
+    width: 20px;
+    z-index: 1000000;
+}
+
+#file-ruler-spacer{
+    height:42px;
+    width:100%;
+    display:block;
+}
 #wesley-ruler-website-width{
     border-left:1px solid #c5c5c5;
     border-right:1px solid #c5c5c5;
@@ -665,7 +785,15 @@ background-image: url("/admin/modules/pages/images/icons/color_18/add.png");
     position: fixed;
     top: 21px;
     width: 100%;
-    z-index:1000000000;
+    z-index:100000000;
+}
+
+#y-ruler-guide{
+    height: 100px; 
+    position: fixed;
+    top: 42px;
+    width: 19px;
+    z-index:100000000;
 }
 
 .ruler-px{
@@ -690,15 +818,19 @@ background-image: url("/admin/modules/pages/images/icons/color_18/add.png");
 .wesley-x-guide{
 	height:1px;
 	width:100%;
-	border-top:1px dotted #9bf776;
+	border-top:1px dotted #00ff09;
 	z-index:100000;
+	cursor: ns-resize !important;
 }
 
 .wesley-y-guide{
-    height:1000px;
+    height:100%;
     width:1px;
-    border-left:1px dotted #9bf776;
+    border-left:1px dotted #00f7ff;
     z-index:100000;
+    top:0px;
+    cursor:ew-resize !important;
+    /*position:fixed;*/
 }
 /*
 .ruler-px:nth-child(even){

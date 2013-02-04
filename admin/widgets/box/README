@@ -1,0 +1,7 @@
+# This is a wes tool readme file
+name:box
+description:this is the box widget
+type:clickable
+subtool:circle, iconpath.gif
+subtool:trapazoid, iconpath.gif
+subtool:star, iconpath.gif

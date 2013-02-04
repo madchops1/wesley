@@ -705,7 +705,12 @@ function getWebsiteLayerIndex(){
                LIMIT 1";
   $result = doQuery($select);
   $row = mysql_fetch_array($result);
-  return $row['zindex'];
+  if($row['zindex'] < 10001){
+    $layerIndex = 10001;
+  } else {
+    $layerIndex = $row['zindex'];
+  }
+  return $layerIndex;
 }
 
 function getWidgetLayerIndex($thing_id){

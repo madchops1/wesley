@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Profound Grid | A grid system for fixed and fluid layouts</title>
+        
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+        <meta name="title" content="Profound Grid | A grid system for fixed and fluid layouts" />
+        <meta name="description" content="Profound Grid is a responsive grid system for fixed and fluid layouts. Built in SCSS, it gives you flexibility and full control." />
+        <meta name="keywords" content="CSS, grid, grid system, Profound, fixed, layout, fluid, responsive, adaptive, design" />
+        
+        <meta property="og:url" content="http://www.profoundgrid.com"/>
+        <meta property="og:title" content="Profound Grid | A grid system for fixed and fluid layouts"/> 
+        <meta property="og:type" content="website"/> 
+        <meta property="og:image" content="http://www.profoundgrid.com/img/example_grid_fixed.png"/> 
+        <meta property="og:site_name" content="Profound Grid"/> 
+        <meta property="og:description" content="Profound Grid is a responsive grid system for fixed and fluid layouts. Built in SCSS, it gives you flexibility and full control."/>
+        <meta name="viewport" content="initial-scale=1,minimum-scale=1,width=device-width">
+
+        <!-- Javascript -->
+        <script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+
+        <!-- Stylesheets -->
+        <link href='http://fonts.googleapis.com/css?family=Raleway:500,900,200' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/examples/responsive.css" type="text/css" media="screen" />
+
+
+        <!--[if lt IE 9]>
+            <script type="text/javascript" src="/js/html5shiv.js"></script>
+            <script type="text/javascript" src="/js/selectivizr.js"></script>
+            <script type="text/javascript" src="/js/respond.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <nav>
+            <div class="center">
+                <ul>
+                    <li>
+                        <a href='#' title="Show Grid" id="gridButton" onclick="return false;">Show Grid</a>
+                    </li>
+                    <li>
+                        <a href="/" id="logo"><img src="/img/logo_top.png" /></a>
+                    </li>
+                    <li>
+                        <a id="navDownload" title="Download .Zip File" href='https://github.com/artofrawr/profoundgrid/archive/master.zip'>Download .Zip File</a>
+                        <a id="navGithub" title="Fork On Github" href='https://github.com/artofrawr/profoundgrid/'>Fork On Github</a>
+                        <a id="navFacebook" title="Share On Facebook" href='http://www.facebook.com/sharer.php?u=http://www.profoundgrid.com'>Share on Facebook</a>
+                        <a id="navTwitter" title="Share On Twitter" href='http://twitter.com/?status=http%3A%2F%2Fwww.profoundgrid.com+by+%40profoundstudio'>Share on Twitter</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header>
+            <div class="center">
+                <a href='fluidmaxwidth.html' title="Show Grid" id="example_prev"><i class="arrow-left"></i><span>previous</span></a>
+                <h1>FLUID RESPONSIVE</h1>
+                <a href='multiple.html' title="Show Grid" id="example_next"><i class="arrow-right"></i><span>next</span></a>
+            </div>
+        </header>
+
+        <article id="row1">
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+        </article>
+
+        <article id="row2">
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+        </article>
+
+        <article id="row3">
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div class="last">3</div>
+        </article>
+
+        <article id="row4">
+            <div>4</div>
+            <div>4</div>
+            <div>4</div>
+        </article>
+
+        <article id="row5">
+            <div>6</div>
+            <div>6</div>
+        </article>
+
+        <article id="row6">
+            <div>12</div>
+        </article>
+
+        <footer>
+            <div class="center">
+                <h3>BUILT BY</h3>
+                <section id="company">
+                    <a href="http://www.weareprofound.com">PROFOUND</a>
+                </section>
+                <section id="meta">
+                    <div>Copyright &copy; 2009-2012 Profound Creative Studio LLC. All rights reserved. </div>
+                    <div>
+                        <a href="http://www.facebook.com/pages/Profound-Studio/174209019285677">Profound on Facebook</a>
+                        <a href="https://twitter.com/profoundstudio">Profound on Twitter</a>
+                    </div>  
+                </section>
+            </div>
+        </footer>
+        
+        <script type="text/javascript">
+
+            // TOGGLE GRID
+            $('#gridButton').click(function(){
+                if($('#grid').length == 0) {
+                    var height = $('body').height();
+                    var html = '<article id="grid"><div class="overlay"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></article>';
+                    $('body').prepend(html);
+                    $('#grid div').css('height', height);
+                }else{
+                    $('#grid').remove();
+                }
+            });
+
+            $(window).resize(function() {
+                if($('#grid').length > 0) {
+                    var height = $('body').height();
+                    $('#grid div').css('height', height);
+                }
+            });
+
+            // CHANGE GRID OVERLAY BEHAVIOUR FOR BROWSERS
+            // THAT DONT SUPPORT "pointer-events: none;" CSS
+            if ($.browser.msie || $.browser.opera) {
+              $('#grid').live('click', function(){
+                $('#grid').remove();
+              });
+            }
+
+            // TOOLTIP
+            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+            $('nav a').hover(function(){
+                if (isMobile == false){
+                    var pos = $(this).offset();
+                    var title = $(this).attr('title');
+                    if ($.trim(title) == ''){
+                        return;
+                    }
+                    $(this).data('tipText', title).removeAttr('title');
+                    if($('.tooltip').length == 0) {
+                        var html = '<p class="tooltip"></p>';
+                        $('body').append(html);
+                    }
+                    $('.tooltip').html('<div class="arrow"></div><div>'+title+'</div>');
+                    $('.tooltip').css('top', pos.top+55).css('left', pos.left+25);
+                    var width = $('.tooltip').outerWidth();
+                    $('.tooltip').css('margin-left', 0-width*0.5);
+                    $('.tooltip').addClass('show');
+                }
+            }, function() {
+                if (isMobile == false){
+                    $('.tooltip').removeClass('show');
+                    $(this).attr('title', $(this).data('tipText'));
+                }
+            });
+
+            
+        </script>
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-9052680-6']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+
+    </body>
+</html>

@@ -131,18 +131,53 @@ if(isset($_POST['del']) == '1')
 	exit();
 }
 
-// UPDATE WIDGET POSITION
-if(isset($_POST['updatewidgetposition']) == '1')
+// UPDATE WIDGET
+if(isset($_POST['updatewidget']) == '1')
 {
 	$update = 	"UPDATE `things` SET ".
-				"`left`='".$_POST['left']."',".
-				"`top`='".$_POST['top']."',".
-				"`width`='".$_POST['width']."',".
-				"`height`='".$_POST['height']."' ".
-				"WHERE `thing_id`='".$_POST['thing_id']."'";
+				"`left`='".urlRequest('left')."',".
+				"`top`='".urlRequest('top')."',".
+				"`width`='".urlRequest('width')."',".
+				"`height`='".urlRequest('height')."',".
+				"`zindex`='".urlRequest('zindex')."',".
+				"`color`='".urlRequest('color')."' ".
+				"WHERE `thing_id`='".urlRequest('thing_id')."'";
 	doQuery($update);
-	die();
+	die($update);
 	exit();
+}
+
+if(isset($_POST['updateguide']) == '1')
+{
+  
+  // UPDATE
+  if(urlRequest('thing_id') != ''){
+    $thing_id = urlRequest('thing_id');
+    $sql = 	"UPDATE `things` SET ".
+            "`left`='".urlRequest('left')."',".
+            "`top`='".urlRequest('top')."',".
+            "`name`='".urlRequest('name')."',".
+            "`resolution`='".urlRequest('resolution')."',".
+            "`color`='".urlRequest('color')."' ".
+            "WHERE `thing_id`='".$thing_id."'";
+  } 
+  // INSERT
+  else {
+    $thing_id = 	nextId('things');
+    $sql = 	"INSERT INTO `things` SET ".
+            "`thing_id`='',".
+            "`widget`='guide',".
+            "`left`='".urlRequest('left')."',".
+            "`top`='".urlRequest('top')."',".
+            "`name`='".urlRequest('name')."',".
+            "`resolution`='".urlRequest('resolution')."',".
+            "`color`='".urlRequest('color')."'";
+  }
+  
+  doQuery($sql);
+  echo $thing_id;
+  die();
+  exit();
 }
 
 // GET SPOT WIDGETS
@@ -218,6 +253,7 @@ if(isset($_POST['dropwidget']) == '1')
 			    "`width`='".$_POST['width']."',".
 			    "`height`='".$_POST['height']."',".
 				"`zindex`='".$websiteLayerIndex."',".
+				"`color`='".$_POST['color']."',".
 			    "website_id='".$_SETTINGS['website_id']."'";
 				    
 				
