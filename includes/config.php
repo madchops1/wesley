@@ -14,18 +14,19 @@ ini_set('display_errors', 1);
 //error_reporting(E_ERROR);
 error_reporting(E_ALL);
 
-/* Local Settings */
+/* Local Settings 
 $_SETTINGS['dbHost'] 		= 'localhost';								// Database Host
 $_SETTINGS['dbName']		= 'wesley';									// Database Name
 $_SETTINGS['dbUser'] 		= 'root';									// Database User
 $_SETTINGS['dbPass'] 		= 'karlkarl1';								// Database Password
+*/
 
-/* Production Settings 
+/* Production Settings */
 $_SETTINGS['dbHost'] 		= 'localhost';								// Database Host
 $_SETTINGS['dbName']		= 'wesley';									// Database Name
 $_SETTINGS['dbUser'] 		= 'root';									// Database User
 $_SETTINGS['dbPass'] 		= 'Karlkarl1';								// Database Password
-*/
+
 
 $_SETTINGS['website_path']	= "/";										// Website Relative Path "/" is the root...
 $_SETTINGS['host_name']		= "wescms.com"; 							// 
